@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stash AI — Human-centric Intelligence</title>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --accent: #7c3aed;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: radial-gradient(circle at 25% 25%, #0f172a 0%, #020617 70%);
+        color: #f8fafc;
+        overflow-x: hidden; /* prevent horizontal scroll */
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .neon {
+        text-shadow: 0 0 12px var(--accent), 0 0 26px var(--accent);
+      }
+      ::-webkit-scrollbar {
+        width: 0;
+      }
+    </style>
+  </head>
+
+  <body class="scroll-smooth">
+    <!-- ╔═ HEADER ═╗ -->
+    <header
+      class="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-4 sm:px-6 lg:px-10 py-4 backdrop-blur-md"
+    >
+      <div class="text-lg sm:text-xl font-extrabold tracking-tight text-violet-400">
+        Stash<span class="text-violet-500">AI</span>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex gap-6 text-slate-300 text-sm font-medium">
+        <a href="#problem" class="hover:text-violet-300">Problem</a>
+        <a href="#vision" class="hover:text-violet-300">Vision</a>
+        <a href="#values" class="hover:text-violet-300">Values</a>
+        <a href="#approach" class="hover:text-violet-300">Approach</a>
+        <a href="#careers" class="hover:text-violet-300">Careers</a>
+      </nav>
+    </header>
+
+    <main class="pt-28">
+      <!-- ╔═ HERO ═╗ -->
+      <section id="hero" class="flex flex-col items-center text-center px-4 sm:px-6">
+        <h1
+          class="neon font-extrabold leading-tight text-3xl sm:text-4xl md:text-6xl max-w-screen-sm mx-auto"
+        >
+          <span class="block">Silently Smart,</span>
+          <span class="block text-violet-400">Powerfully Human.</span>
+        </h1>
+
+        <p class="mt-4 max-w-xs sm:max-w-md text-base sm:text-lg text-slate-300">
+          Intelligence that hums in the background—so people stay front and center.
+        </p>
+
+        <canvas id="dotCanvas" class="mt-16 w-full h-64 max-w-screen-sm"></canvas>
+      </section>
+
+      <!-- ╔═ PROBLEM ═╗ -->
+      <section id="problem" class="mt-32 px-4 sm:px-6">
+        <div
+          class="max-w-5xl mx-auto glass rounded-3xl p-8 sm:p-10 md:p-14 flex flex-col gap-6"
+        >
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">
+            The Problem We Solve
+          </h2>
+          <p class="text-base sm:text-lg md:text-xl text-slate-200">
+            AI is ready—shipping it isn’t. Teams lose weeks fighting three blockers:
+          </p>
+
+          <ul class="grid gap-4 md:grid-cols-3 text-slate-300 text-sm sm:text-base md:text-lg">
+            <li class="flex items-start gap-2">
+              <span class="text-violet-400 text-xl">•</span> Disconnected tools &
+              pipelines delay launches
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-violet-400 text-xl">•</span> Invisible models sap
+              trust & approvals
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-violet-400 text-xl">•</span> Strict data rules turn
+              deployment into a legal maze
+            </li>
+          </ul>
+
+          <p class="text-base sm:text-lg md:text-xl text-slate-200">
+            <strong>Stash AI</strong> delivers one integrated, explainable &
+            privacy-first stack—so you can deploy ML in days, not months.
+          </p>
+        </div>
+      </section>
+
+      <!-- ╔═ VISION ═╗ -->
+      <section id="vision" class="mt-32 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto grid lg:grid-cols-2 items-center gap-10">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">Our Vision</h2>
+          <p
+            class="glass p-6 sm:p-8 rounded-2xl text-base sm:text-lg md:text-xl text-slate-200"
+          >
+            A world where trustworthy AI quietly augments human decisions—from
+            learning to healthcare to climate—so people solve bigger problems,
+            faster.
+          </p>
+        </div>
+      </section>
+
+      <!-- ╔═ VALUES ═╗ -->
+      <section id="values" class="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
+        <h2 class="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-12">
+          Core Values
+        </h2>
+
+        <div class="grid gap-6 sm:gap-8 md:grid-cols-3">
+          <div class="glass p-6 rounded-2xl flex flex-col">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2">Human First</h3>
+            <p class="text-slate-300 flex-1 text-sm sm:text-base">
+              We obsess over experience—AI should elevate, not distract.
+            </p>
+          </div>
+
+          <div class="glass p-6 rounded-2xl flex flex-col">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2">
+              Radical Transparency
+            </h3>
+            <p class="text-slate-300 flex-1 text-sm sm:text-base">
+              Explainable systems earn trust. We open the black box.
+            </p>
+          </div>
+
+          <div class="glass p-6 rounded-2xl flex flex-col">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2">Safety by Design</h3>
+            <p class="text-slate-300 flex-1 text-sm sm:text-base">
+              Privacy & ethics are blueprints, not features.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ╔═ APPROACH ═╗ -->
+      <section id="approach" class="mt-32 px-4 sm:px-6">
+        <h2 class="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-12">
+          Our Approach
+        </h2>
+
+        <div class="relative max-w-5xl mx-auto">
+          <div
+            class="absolute inset-0 -skew-y-2 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-indigo-600/20 rounded-3xl"
+          ></div>
+
+          <div
+            class="relative glass p-8 sm:p-10 rounded-3xl grid gap-8 md:grid-cols-2"
+          >
+            <div>
+              <h4 class="text-xl sm:text-2xl font-semibold mb-2">
+                Research ⇢ Reality
+              </h4>
+              <p class="text-slate-300 text-sm sm:text-base">
+                We distill frontier ML into production-ready modules, co-developed
+                with domain experts.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xl sm:text-2xl font-semibold mb-2">Modular Stack</h4>
+              <p class="text-slate-300 text-sm sm:text-base">
+                Composable micro-services let us iterate safely and ship across
+                verticals.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xl sm:text-2xl font-semibold mb-2">
+                Privacy-Preserving AI
+              </h4>
+              <p class="text-slate-300 text-sm sm:text-base">
+                On-device inference & differential privacy keep sensitive data
+                sealed.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xl sm:text-2xl font-semibold mb-2">
+                Human-in-the-Loop
+              </h4>
+              <p class="text-slate-300 text-sm sm:text-base">
+                Feedback cycles harness expert judgement to refine model outputs
+                continuously.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ╔═ CAREERS ═╗ -->
+      <section id="careers" class="mt-40 text-center px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          Join the Builders
+        </h2>
+        <p
+          class="text-slate-300 max-w-xs sm:max-w-md md:max-w-2xl mx-auto text-sm sm:text-base"
+        >
+          We’re hiring researchers, engineers, and designers who believe
+          technology should expand human capacity.
+          <span class="text-violet-300">careers@stashai.com</span>
+        </p>
+      </section>
+    </main>
+
+    <!-- ╔═ FOOTER ═╗ -->
+    <footer
+      class="mt-32 py-10 text-center text-slate-500 flex flex-col items-center gap-4 px-4"
+    >
+      <div
+        class="flex flex-wrap justify-center items-center gap-3 text-base sm:text-lg font-medium"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/IIT_Kanpur_Logo.svg/1200px-IIT_Kanpur_Logo.svg.png"
+          alt="IIT Kanpur logo"
+          class="h-8 w-auto"
+        />
+        <span class="text-center">Developed by Engineers from IIT Kanpur</span>
+      </div>
+
+      <span class="text-xs sm:text-sm">© 2025 Stash AI. Crafted with curiosity.</span>
+    </footer>
+
+    <!-- ╔═ DOT-CANVAS SCRIPT ═╗ -->
+    <script>
+      const canvas = document.getElementById("dotCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const DOT_COUNT = 140;
+      const dots = [];
+      let width, height;
+      let mouseX = -1000,
+        mouseY = -1000;
+
+      function resize() {
+        width = canvas.width = canvas.clientWidth;
+        height = canvas.height = canvas.clientHeight;
+        dots.length = 0;
+        for (let i = 0; i < DOT_COUNT; i++) {
+          dots.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 1.5 + 0.5,
+            dx: (Math.random() - 0.5) * 0.35,
+            dy: (Math.random() - 0.5) * 0.35,
+          });
+        }
+      }
+      window.addEventListener("resize", resize);
+      resize();
+
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+      });
+      canvas.addEventListener("mouseleave", () => {
+        mouseX = mouseY = -1000;
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = "#94a3b8";
+
+        dots.forEach((d) => {
+          const dist = Math.hypot(d.x - mouseX, d.y - mouseY);
+          if (dist < 80) {
+            const a = Math.atan2(d.y - mouseY, d.x - mouseX);
+            d.x += Math.cos(a) * 1.5;
+            d.y += Math.sin(a) * 1.5;
+          }
+          d.x += d.dx;
+          d.y += d.dy;
+          if (d.x < 0 || d.x > width) d.dx *= -1;
+          if (d.y < 0 || d.y > height) d.dy *= -1;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    </script>
+  </body>
+</html>
