@@ -69,7 +69,7 @@
           Intelligence that hums in the background—so people stay front and center.
         </p>
 
-        <canvas id="dotCanvas" class="mt-16 w-full h-64 max-w-screen-sm"></canvas>
+        <canvas id="dotCanvas" class="mt-16 h-64 w-full self-stretch md:max-w-none"></canvas>
       </section>
 
       <!-- ╔═ PROBLEM ═╗ -->
@@ -81,7 +81,7 @@
             The Problem We Solve
           </h2>
           <p class="text-base sm:text-lg md:text-xl text-slate-200">
-            AI is ready—shipping it isn’t. Teams lose weeks fighting three blockers:
+            AI is ready—shipping it isn't. Teams lose weeks fighting three blockers:
           </p>
 
           <ul class="grid gap-4 md:grid-cols-3 text-slate-300 text-sm sm:text-base md:text-lg">
@@ -215,7 +215,7 @@
         <p
           class="text-slate-300 max-w-xs sm:max-w-md md:max-w-2xl mx-auto text-sm sm:text-base"
         >
-          We’re hiring researchers, engineers, and designers who believe
+          We're hiring researchers, engineers, and designers who believe
           technology should expand human capacity.
           <span class="text-violet-300">careers@stashai.com</span>
         </p>
@@ -245,7 +245,7 @@
       const canvas = document.getElementById("dotCanvas");
       const ctx = canvas.getContext("2d");
 
-      const DOT_COUNT = 140;
+      const DOT_COUNT = 300;
       const dots = [];
       let width, height;
       let mouseX = -1000,
@@ -259,9 +259,10 @@
           dots.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            r: Math.random() * 1.5 + 0.5,
-            dx: (Math.random() - 0.5) * 0.35,
-            dy: (Math.random() - 0.5) * 0.35,
+            r: Math.random() * 1.2 + 0.3,
+            dx: (Math.random() - 0.5) * 0.25,
+            dy: (Math.random() - 0.5) * 0.25,
+            opacity: Math.random() * 0.5 + 0.5,
           });
         }
       }
@@ -279,21 +280,23 @@
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = "#94a3b8";
 
         dots.forEach((d) => {
           const dist = Math.hypot(d.x - mouseX, d.y - mouseY);
-          if (dist < 80) {
+          if (dist < 100) {
             const a = Math.atan2(d.y - mouseY, d.x - mouseX);
-            d.x += Math.cos(a) * 1.5;
-            d.y += Math.sin(a) * 1.5;
+            const force = (100 - dist) / 100;
+            d.x += Math.cos(a) * force * 2;
+            d.y += Math.sin(a) * force * 2;
           }
           d.x += d.dx;
           d.y += d.dy;
           if (d.x < 0 || d.x > width) d.dx *= -1;
           if (d.y < 0 || d.y > height) d.dy *= -1;
+          
           ctx.beginPath();
           ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(148, 163, 184, ${d.opacity})`;
           ctx.fill();
         });
 
