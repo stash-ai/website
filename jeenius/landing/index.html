@@ -1,0 +1,2421 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEEnius AI | Train With Future Papers</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary: #1B3B36; /* Deep Forest Green */
+            --primary-hover: #244A44;
+            --secondary: #E8F5E9; /* Pale Mint */
+            --accent: #DCEFD8; /* Solarpunk Light Green */
+            --bg-body: #FAFCFA; /* Off-white organic background */
+            --surface: #FFFFFF;
+            --text-main: #0F201D;
+            --text-muted: #5C706C;
+            --border: #E2E8E6;
+            --shadow-soft: 0 4px 20px -2px rgba(27, 59, 54, 0.06);
+            --shadow-card: 0 20px 40px -10px rgba(27, 59, 54, 0.08);
+            --shadow-glow: 0 0 30px rgba(27, 59, 54, 0.1);
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .flex-col { flex-direction: column; }
+        .grid { display: grid; }
+        .gap-4 { gap: 1rem; }
+        .gap-8 { gap: 2rem; }
+        .text-center { text-align: center; }
+        .hidden { display: none; }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+        
+        p { color: var(--text-muted); }
+
+        .text-primary { color: var(--primary); }
+        .text-accent { color: var(--accent); }
+        .font-bold { font-weight: 700; }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(27, 59, 54, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(27, 59, 54, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background-color: #f9f9f9;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(27, 59, 54, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 0%, #F1F8E9 0%, #FAFCFA 70%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid rgba(27, 59, 54, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-content h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background-color: var(--accent);
+            opacity: 0.6;
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            margin: 24px 0 32px;
+            max-width: 540px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .trust-anchors {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .trust-item .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .trust-item .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 6px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Hero Card (Right Side) */
+        .hero-card-wrapper {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-card-glow {
+            position: absolute;
+            inset: -20px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary), transparent);
+            border-radius: 50px;
+            filter: blur(40px);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .hero-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            z-index: 1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #F0FDF4;
+            border: 1px solid #DCFCE7;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #15803D;
+            text-transform: uppercase;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22C55E;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #F3F4F6;
+            font-size: 0.9rem;
+        }
+
+        .stat-label { font-weight: 500; color: var(--text-muted); }
+        .stat-value { font-weight: 700; color: var(--text-main); }
+
+        .progress-container {
+            margin-top: 16px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #F3F4F6;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 10px;
+            width: 94.8%;
+        }
+
+        .insight-box {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #F9FAFB, #FFFFFF);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .insight-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .insight-slider {
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .insight-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: opacity 0.3s ease;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            background: white;
+            border: 1px solid var(--border);
+            padding: 4px 8px;
+            border-radius: 6px;
+            color: var(--text-muted);
+        }
+
+        .insight-controls {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 16px;
+        }
+
+        .insight-nav {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .insight-nav:hover {
+            border-color: var(--primary);
+            background: var(--secondary);
+        }
+
+        /* --- USP Section --- */
+        .usp-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .usp-card {
+            background: var(--bg-body);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .usp-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-soft);
+            transform: translateY(-5px);
+        }
+
+        .usp-icon {
+            width: 64px;
+            height: 64px;
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        /* --- Features Section --- */
+        .features-section {
+            padding: 100px 0;
+            background: var(--bg-body);
+            position: relative;
+        }
+
+        .feature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .feature-block:last-child { margin-bottom: 0; }
+
+        .feature-block.reverse .feature-content { order: 2; }
+        .feature-block.reverse .feature-visual { order: 1; }
+
+        .feature-list { margin-top: 30px; }
+
+        .feature-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .feature-visual {
+            position: relative;
+        }
+
+        .visual-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 12px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(255,255,255,0.6);
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
+        }
+        
+        .feature-block:hover .visual-card {
+            transform: rotate(0deg);
+        }
+
+        .visual-inner {
+            background: rgba(232, 245, 233, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(27, 59, 54, 0.1);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .ai-visual {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .ai-chat {
+            background: white;
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 12px 30px rgba(27, 59, 54, 0.12);
+            border: 1px solid rgba(27, 59, 54, 0.08);
+            font-family: 'IBM Plex Mono', 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .ai-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .ai-status .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 rgba(34, 197, 94, 0.5);
+            animation: pulseDot 2s infinite;
+        }
+
+        .ai-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .ai-typing {
+            font-size: 0.9rem;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid rgba(27, 59, 54, 0.6);
+            animation: typing 5s steps(60, end) infinite alternate, caretBlink 0.75s step-end infinite;
+        }
+
+        .ai-panels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+        }
+        
+
+        .ai-panel {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid rgba(27, 59, 54, 0.08);
+            padding: 14px;
+            box-shadow: 0 8px 20px rgba(27, 59, 54, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+
+        .ai-panel h5 {
+            margin: 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+        }
+
+        .graph-line {
+            position: relative;
+            height: 60px;
+            border-radius: 14px;
+            background: #f3f7f3;
+            overflow: hidden;
+            border: 1px solid rgba(27,59,54,0.08);
+        }
+
+        .graph-line canvas {
+            position: absolute;
+            inset: 0;
+        }
+
+        .equation {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        .fbd-canvas {
+            width: 100%;
+            height: 100px;
+        }
+
+        .ai-panel small {
+            color: var(--muted);
+            font-size: 0.75rem;
+        }
+
+        .ai-panel ul {
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        .ai-panel li {
+            margin-bottom: 4px;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes caretBlink {
+            from, to { border-color: transparent; }
+            50% { border-color: rgba(27, 59, 54, 0.7); }
+        }
+
+        @keyframes pulseDot {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        @keyframes sweep {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(27,59,54,0.05);
+        }
+
+        .feature-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            margin-bottom: 16px;
+        }
+
+        .feature-card-list {
+            list-style: none;
+        }
+
+        .feature-card-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .feature-card-list i {
+            color: var(--primary);
+        }
+
+        /* --- How It Works --- */
+        .steps-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .steps-line {
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #E2E8E6, transparent);
+            z-index: 0;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s;
+        }
+
+        .step-item:hover .step-icon {
+            transform: scale(1.1);
+            border-color: var(--accent);
+        }
+
+        /* --- Pricing --- */
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--bg-body);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: flex-start;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pricing-card.featured {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-card);
+            transform: scale(1.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .pricing-card.featured h3, 
+        .pricing-card.featured .price, 
+        .pricing-card.featured p,
+        .pricing-card.featured li {
+            color: white;
+        }
+        
+        .pricing-card.featured .text-muted {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 16px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .plan-body {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .plan-metrics {
+            margin: 24px 0;
+            border: 1px solid rgba(27, 59, 54, 0.08);
+            border-radius: 16px;
+            padding: 20px;
+            background: rgba(27, 59, 54, 0.02);
+        }
+
+        .plan-metrics h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .plan-metrics ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .plan-metrics li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .plan-metrics span {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .plan-details-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .plan-details-content.open {
+            display: block;
+        }
+
+        .plan-toggle {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 12px 22px;
+            background: white;
+        }
+
+        .pricing-card.featured .plan-toggle {
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+            color: var(--accent);
+        }
+
+        .testimonial-section {
+            padding: 100px 0;
+            background: var(--bg-body);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid rgba(27,59,54,0.08);
+            box-shadow: var(--shadow-soft);
+            font-size: 0.95rem;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .testimonial-card span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .pricing-toggle-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pricing-toggle-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 60px;
+        }
+
+        .pricing-toggle-group {
+            display: inline-flex;
+            border: 1px solid rgba(27,59,54,0.1);
+            border-radius: 999px;
+            padding: 4px;
+            background: white;
+            gap: 4px;
+        }
+
+        .pricing-toggle-group button {
+            border: none;
+            background: transparent;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-weight: 600;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pricing-toggle-group button.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 16px rgba(27,59,54,0.2);
+        }
+
+        [data-plan-group="annual"] {
+            display: none;
+        }
+
+
+        .plan-toggle i {
+            transition: transform 0.2s ease;
+        }
+
+        .plan-toggle.open {
+            color: var(--primary);
+        }
+
+        .plan-toggle.open i {
+            transform: rotate(180deg);
+        }
+
+        .learn-more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .learn-more-link i {
+            font-size: 0.85rem;
+        }
+
+        .pricing-features {
+            margin: 20px 0 0;
+            list-style: none;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+
+        .pricing-features i {
+            color: var(--primary);
+        }
+
+        .pricing-card.featured .pricing-features i {
+            color: var(--accent);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .popular-tag {
+        .plan-exclusions {
+            margin: 0;
+            padding-top: 16px;
+            border-top: 1px solid rgba(27,59,54,0.08);
+        }
+        .pricing-card .btn-full {
+            margin-top: 16px;
+        }
+
+
+        .plan-exclusions ul {
+            list-style: none;
+        }
+
+        .plan-exclusions li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .plan-exclusions i {
+            color: #EF4444 !important;
+        }
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* --- FAQ --- */
+        .faq-section {
+            padding: 100px 0;
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 24px;
+            background: white;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            padding: 0 24px 24px;
+            color: var(--text-muted);
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 60px;
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(160px, 1fr));
+            gap: 40px;
+        }
+
+        @media (max-width: 640px) {
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            h1 { font-size: 2.8rem; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-content { text-align: center; }
+            .hero-actions { justify-content: center; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .trust-anchors { justify-content: center; }
+            .feature-block { grid-template-columns: 1fr; gap: 40px; }
+            .feature-block.reverse .feature-content { order: 1; }
+            .feature-block.reverse .feature-visual { order: 2; }
+            .feature-cards { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .pricing-card.featured { transform: scale(1); }
+            .steps-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .steps-line { display: none; }
+            .footer-cta { flex-direction: column; text-align: center; gap: 30px; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .usp-grid { grid-template-columns: 1fr; }
+            .feature-cards { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
+            .hero { padding-top: 120px; }
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 999;
+        }
+        
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+    </style>
+
+    <!-- Firebase & Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCtYkgqv45K4vV7lbg-P_NRaJ5bQmvDzpk",
+            authDomain: "jeenius-4d29d.firebaseapp.com",
+            projectId: "jeenius-4d29d",
+            storageBucket: "jeenius-4d29d.firebasestorage.app",
+            messagingSenderId: "194414308208",
+            appId: "1:194414308208:web:afc4b571031e4b2ddc3db5",
+            measurementId: "G-5HZC38VBFC"
+        };
+        let firebaseAnalytics = null;
+        try {
+            const firebaseApp = firebase.initializeApp(firebaseConfig);
+            firebaseAnalytics = firebase.analytics(firebaseApp);
+            window.firebaseAnalytics = firebaseAnalytics;
+        } catch (error) {
+            console.warn('Firebase init error', error);
+        }
+    </script>
+
+    <!-- PostHog -->
+    <script>
+        (function () {
+            try {
+                !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture identify alias reset people.set people.set_once group set_config register register_once unregister".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+                posthog.init('phc_jvXIe0ffzOTMJY9HmQv9ZQIPEm69i4mjXKLgrfZvv3O', {
+                    api_host: 'https://us.i.posthog.com',
+                    capture_pageview: true,
+                    session_recording: { recordCanvas: true }
+                });
+            } catch (err) {
+                console.warn('PostHog init error', err);
+                window.posthog = { capture: function () { } };
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="jeenius.webp" alt="JEEnius logo">
+                </div>
+                JEEnius AI
+            </a>
+
+            <div class="nav-links">
+                <a href="#prediction-lab">2026 Prediction</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </div>
+
+            <div class="nav-cta">
+                <a href="#pricing" class="btn btn-primary" data-cta="true">Start Free Trial</a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#prediction-lab">2026 Prediction</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#pricing" style="color: var(--primary);" data-cta="true">Start Free Trial</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left Content -->
+                <div class="hero-content">
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+                        <div class="hero-badge">
+                            <i class="fa-solid fa-sparkles" style="color: #F59E0B;"></i>
+                            Special JEE-Trained AI
+                        </div>
+                        <div class="hero-badge">
+                            Built by IITians with Love ❤️
+                        </div>
+                    </div>
+                    
+                    <h1>
+                        2026 JEE Paper Predictions. <br>
+                        <span>One Kota-Level AI Mentor.</span>
+                    </h1>
+                    
+                    <p class="hero-desc">
+                        JEEnius AI is a JEE-only model trained on 20+ years of solved papers, Kota notes, and proven formulas—so answers land like a real mentor explaining the why.
+                    </p>
+                    
+                    <p class="hero-desc" style="margin-top: 12px;">
+                        <strong>Solve 500+ questions likely to appear in the next JEE Main 2026 paper</strong>—fresh mocks, drills, and topic mixes generated daily. Upload any JEE PDF (notes, PYQs, coaching modules) and JEEnius AI will analyze it, answer every question, and spin up fresh DPPs. Unlock 2026 Prediction to view the complete JEE 2026 forecast.
+                    </p>
+                    
+                    
+                    <div class="hero-actions">
+                        <a href="#prediction-lab" class="btn btn-primary" data-cta="true">
+                            Unlock 2026 Prediction <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+                        </a>
+                        <a href="#pricing" class="btn btn-secondary">
+                            Browse Plans
+                        </a>
+                    </div>
+
+                    <div class="trust-anchors">
+                        <div class="trust-item">
+                            <div class="number">10,000+</div>
+                            <div class="label">Active Aspirants</div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="number">50,000+</div>
+                            <div class="label">Doubts Solved</div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="number">70,000+</div>
+                            <div class="label">Questions Attempted</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content: Prediction Card -->
+                <div class="hero-card-wrapper">
+                    <div class="hero-card-glow"></div>
+                    <div class="hero-card">
+                        <div class="card-header">
+                            <div class="flex items-center" style="gap: 12px;">
+                                <div class="card-icon">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1.1rem; margin: 0;">Prediction Engine 2026</h3>
+                                    <span style="font-size: 0.8rem; color: var(--text-muted);">System Active</span>
+                                </div>
+                            </div>
+                            <div class="live-badge">
+                                <div class="live-dot"></div>
+                                Live Analysis
+                            </div>
+                        </div>
+
+                        <div class="card-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">Target Exam Cycle</span>
+                                <span class="stat-value">JEE 2026</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Model Stack</span>
+                                <span class="stat-value">JEEnius AI + {GPT-5 • Gemini 3 Pro • Fathomn AI}</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Data Points Analyzed</span>
+                                <span class="stat-value">20+ Years (2002-2025)</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Next-Year Predicted Questions</span>
+                                <span class="stat-value" style="color: var(--primary);">500+</span>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <div class="insight-header">
+                                <i class="fa-solid fa-lightbulb" style="color: #F59E0B;"></i>
+                                Latest Insights
+                            </div>
+                            <div class="insight-slider">
+                                <div class="insight-text" id="insightText">
+                                    "High probability of <strong>Rotation + Electrostatics</strong> mixed concept question in Paper 1 based on 2021-2024 trend shift."
+                                </div>
+                                <div class="tags" id="insightTags">
+                                    <span class="tag">#Physics</span>
+                                    <span class="tag">#HighYield</span>
+                                </div>
+                            </div>
+                            <div class="insight-controls">
+                                <button class="insight-nav" id="insightPrev">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button class="insight-nav" id="insightNext" style="margin-left: 8px;">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <a href="prediction-engine.html" target="_blank" class="learn-more-link">
+                            Learn how we predict <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2026 Prediction Section -->
+    <section id="prediction-lab" class="usp-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Why 2026 Prediction Wins</span>
+                <h2>The Only AI Mentored on 20+ Years of JEE</h2>
+                <p style="margin-top: 16px; font-size: 1.1rem;">Tap into 25-year solved papers, high-quality notes, formulas, and strategies. No tech jargon, just clear guidance that shows why each step works.</p>
+            </div>
+
+            <div class="usp-grid">
+                <!-- Card 1 -->
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3>The 2026 Prediction Engine</h3>
+                    <p style="margin-top: 12px;">Runs probability models on 25-year data to create <strong>500+ questions likely to appear next year</strong>. Built on the best SOTA model engine tuned just for JEE, so every set feels like the actual paper.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3>The Super-Brain Stack</h3>
+                    <p style="margin-top: 12px;">JEEnius AI is the orchestrator—fine-tuned on 20+ years of JEE data and then supercharged by GPT-5 series, o-series, Gemini 2.5 & 3 Pro, plus <a href="https://huggingface.co/FractalAIResearch/Fathom-R1-14B?trk=public_post_comment-text" style="color: var(--primary); text-decoration: underline;">Fathom AI (perfect score JEE Adv 2025)</a>. The result feels like one specialist model that borrows the best instincts from every powerhouse.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Practice Control Room</h3>
+                    <p style="margin-top: 12px;">Search any PYQ with normal keywords, mix topics, or <strong>generate brand-new custom questions matched to your exact need</strong>. It highlights misconception traps and shows FBDs, graphs, and formulas so you never repeat the same slip.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            
+            <!-- Feature 1 -->
+            <div class="feature-block">
+                <div class="feature-content">
+                    <div class="usp-icon" style="width: 50px; height: 50px; font-size: 1.2rem; margin-bottom: 16px;">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h3>The AI Tutor: Better Than a Human Teacher</h3>
+                    <p style="margin-top: 12px;">Get explanations that actually make sense. No generic bot answers.</p>
+                    
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div><strong>Deep-Dive Solutions:</strong> Step-by-step derivations, Free Body Diagrams (FBDs), graphs, and balanced reactions show why each option is right or wrong.</div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div><strong>Quality Over Speed:</strong> Our AI "thinks" deeply to ensure pedagogical accuracy.</div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div><strong>Misconception Alerts:</strong> The tutor highlights traps, fixes the formula step, and shows the corrected diagram before you move on.</div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div><strong>Next Paper Predictions:</strong> Preview likely question formats for the upcoming attempt, refreshed from 2026 Prediction daily.</div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div><strong>24/7 Kota Doubt Partner:</strong> Ask with text, voice, or images any time—responses stay teacher-grade even if they take a few extra seconds.</div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div><strong>Instant Question Generation:</strong> Tell it “mix Rotation + Electrostatics + Gauss Law” and get ready-to-solve variations on the spot.</div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div><strong>JEEnius Studio:</strong> Upload any JEE PDF (notes, PYQ, mocks) and the AI analyzes it, answers questions, builds DPPs, and solves step-by-step.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <div class="visual-card">
+                        <div class="visual-inner">
+                            <div class="ai-visual">
+                                <div class="ai-chat">
+                                    <div class="ai-status"><span class="pulse-dot"></span> Thinking Process: 1.2s</div>
+                                    <div class="ai-question">Q: Block on an incline (37°) is pulled by torque τ. Find angular acceleration.</div>
+                                    <div class="ai-typing">AI: Start with the FBD. Resolve forces along the plane, then connect τ = Iα for the wheel...</div>
+                                </div>
+                                <div class="ai-panels">
+                                    <div class="ai-panel">
+                                        <h5>FBD</h5>
+                                        <canvas id="fbdCanvas" class="fbd-canvas" width="160" height="100"></canvas>
+                                    </div>
+                                    <div class="ai-panel">
+                                        <h5>Graph</h5>
+                                        <div class="graph-line">
+                                            <canvas id="aiGraphCanvas" width="300" height="60"></canvas>
+                                        </div>
+                                        <small>Angular vs. linear velocity overlay</small>
+                                    </div>
+                                    <div class="ai-panel">
+                                        <h5>Equations</h5>
+                                        <div class="equation">Στ = Iα</div>
+                                        <div class="equation">a = rα</div>
+                                        <div class="equation">mg sinθ - Tr = ma</div>
+                                    </div>
+                                    <div class="ai-panel">
+                                        <h5>Misconceptions</h5>
+                                        <ul>
+                                            <li>Assuming N = mg instead of mg cosθ.</li>
+                                            <li>Forgetting tension reduces net torque.</li>
+                                            <li>Mixing up a and α without a = rα.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-card-icon" style="background: rgba(27, 59, 54, 0.08); color: var(--primary);">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h4>Smart Schedule Engine</h4>
+                    <p>Your coaching, school, and self-study synced with automatic recovery if you miss a day.</p>
+                    <ul class="feature-card-list">
+                        <li><i class="fa-solid fa-check"></i> Auto-adjusting targets</li>
+                        <li><i class="fa-solid fa-check"></i> Burnout prevention breaks</li>
+                        <li><i class="fa-solid fa-check"></i> Syncs with school hours</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon" style="background: rgba(27, 59, 54, 0.08); color: var(--primary);">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h4>Gamified Competition</h4>
+                    <p>Make revision addictive with 1v1 real-time battles and streak rewards.</p>
+                    <ul class="feature-card-list">
+                        <li><i class="fa-solid fa-check"></i> Live 1v1 duels</li>
+                        <li><i class="fa-solid fa-check"></i> Global leaderboards</li>
+                        <li><i class="fa-solid fa-check"></i> XP & badge rewards</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon" style="background: rgba(27, 59, 54, 0.08); color: var(--primary);">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h4>Performance Analytics</h4>
+                    <p>Crystal-clear progress dashboards that highlight misconceptions before they snowball.</p>
+                    <ul class="feature-card-list">
+                        <li><i class="fa-solid fa-check"></i> Concept-wise accuracy</li>
+                        <li><i class="fa-solid fa-check"></i> Weak-spot alerts</li>
+                        <li><i class="fa-solid fa-check"></i> Rank trajectory insights</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="steps-section" id="adaptive-flow">
+        <div class="container">
+            <div class="section-header">
+                <h2>Adaptive Flow</h2>
+                <p style="margin-top: 16px;">No setup quiz. The more you solve, the smarter the plan gets.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="steps-line"></div>
+                
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-play"></i></div>
+                    <h4>1. Start Solving</h4>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Pick a PYQ, mock, or generated set. No onboarding quiz needed.</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-eye"></i></div>
+                    <h4>2. AI Observes</h4>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Tracks timing, accuracy, and the exact concept you struggled with.</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-route"></i></div>
+                    <h4>3. Plan Shifts</h4>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Study plan, analytics, and question difficulty reset automatically.</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4>4. Score Climbs</h4>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">AI brings tougher mixes only after you master the last set.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p style="margin-top: 16px;">Every plan taps into 100k+ predicted and practice questions. Cancel anytime.</p>
+            </div>
+            <div class="pricing-toggle-wrapper">
+                <div class="pricing-toggle-group">
+                    <button class="active" data-pricing-toggle="monthly">Monthly</button>
+                    <button data-pricing-toggle="annual">Annual · 50% Off</button>
+                </div>
+            </div>
+
+            <div class="pricing-grid" data-plan-group="monthly">
+                <!-- Free -->
+                <div class="pricing-card" data-plan="free">
+                    <h3>Free</h3>
+                    <div class="price">₹0</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 24px;">Get a taste of most of JEEnius AI features.</p>
+                    <a href="#" class="btn btn-secondary btn-full" data-cta="true">Get Started</a>
+                    
+                    <div class="plan-body">
+                        <div class="plan-metrics">
+                            <h4>Low Limits</h4>
+                            <ul>
+                                <li>Predicted Questions <span>50</span></li>
+                                <li>Image Doubt Uploads <span>15</span></li>
+                                <li>JEEnius AI Doubt Solving <span>500</span></li>
+                                <li>Mock Tests <span>30</span></li>
+                            </ul>
+                        </div>
+                        <div class="plan-exclusions">
+                            <ul>
+                                <li><i class="fa-solid fa-xmark" style="color: #EF4444;"></i> Study Plan Generation</li>
+                                <li><i class="fa-solid fa-xmark" style="color: #EF4444;"></i> Performance Analytics</li>
+                                <li><i class="fa-solid fa-xmark" style="color: #EF4444;"></i> Misconception Fixes</li>
+                                <li><i class="fa-solid fa-xmark" style="color: #EF4444;"></i> Priority Support</li>
+                            </ul>
+                        </div>
+                        <div class="plan-details-content" data-plan-details="free">
+                            <ul class="pricing-features">
+                                <li><i class="fa-solid fa-check"></i> Question Intent Generation: 20 prompts</li>
+                                <li><i class="fa-solid fa-check"></i> Formula Analogy Walkthroughs: 10</li>
+                                <li><i class="fa-solid fa-check"></i> Daily Practice Paper Attempts: 15</li>
+                                <li><i class="fa-solid fa-check"></i> Keyword PYQ Search: 50 queries</li>
+                                <li><i class="fa-solid fa-check"></i> JEEnius Studio Forge Builds: 5</li>
+                                <li><i class="fa-solid fa-check"></i> Adaptive Practice Questions: 60</li>
+                                <li><i class="fa-solid fa-check"></i> Duel Matches: 60</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pro -->
+                <div class="pricing-card featured" data-plan="pro">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">₹499 <span>/month</span></div>
+                    <p style="font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.8);">Serious prep with every limit expanded.</p>
+                    <a href="#" class="btn btn-secondary btn-full" style="color: var(--primary); border: none;" data-cta="true">Start your dream IIT Prep today</a>
+
+                    <div class="plan-body">
+                        <div class="plan-metrics" style="border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);">
+                            <h4 style="color: rgba(255,255,255,0.7);">Ample Limits</h4>
+                            <ul>
+                                <li>Predicted Questions <span style="color: rgba(255,255,255,0.8);">Unlimited</span></li>
+                                <li>Image Doubt Uploads <span style="color: rgba(255,255,255,0.8);">200</span></li>
+                                <li>JEEnius AI Doubt Solving <span style="color: rgba(255,255,255,0.8);">10,000</span></li>
+                                <li>Mock Tests <span style="color: rgba(255,255,255,0.8);">1,000</span></li>
+                            </ul>
+                        </div>
+                        <div class="plan-details-content" data-plan-details="pro">
+                            <ul class="pricing-features">
+                                <li><i class="fa-solid fa-check"></i> Question Intent Generation: 500 prompts/mo</li>
+                                <li><i class="fa-solid fa-check"></i> Formula Analogy Walkthroughs: 100/mo</li>
+                                <li><i class="fa-solid fa-check"></i> Daily Practice Paper Attempts: 60/mo</li>
+                                <li><i class="fa-solid fa-check"></i> Keyword PYQ Search: 500 queries/mo</li>
+                                <li><i class="fa-solid fa-check"></i> Image Doubt Uploads: 200</li>
+                                <li><i class="fa-solid fa-check"></i> JEEnius AI Doubt Solving: 10,000</li>
+                                <li><i class="fa-solid fa-check"></i> JEEnius Studio Forge Builds: 60</li>
+                                <li><i class="fa-solid fa-check"></i> Adaptive Practice Questions: 1,000</li>
+                                <li><i class="fa-solid fa-check"></i> Duel Matches: 600</li>
+                                <li><i class="fa-solid fa-check"></i> Study Plan Generation: Included</li>
+                                <li><i class="fa-solid fa-check"></i> Performance Analytics: Pro-grade dashboards</li>
+                                <li><i class="fa-solid fa-check"></i> Misconception Fixes: 5,000/mo</li>
+                                <li><i class="fa-solid fa-check"></i> Priority Support: Included</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="plan-toggle" id="planDetailsToggle">
+                        <span>View Details</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+
+                <!-- Pro+ -->
+                <div class="pricing-card">
+                    <h3>Pro+</h3>
+                    <div class="price">₹999 <span>/month</span></div>
+                    <p style="font-size: 0.9rem; margin-bottom: 24px;">Droppers + Advanced prep with no caps.</p>
+                    <a href="#" class="btn btn-primary btn-full" data-cta="true">Upgrade Now</a>
+                    
+                    <div class="plan-body">
+                        <div class="plan-metrics">
+                            <h4>No Limits</h4>
+                            <ul>
+                                <li>Predicted Questions <span>Unlimited</span></li>
+                                <li>Image Doubt Uploads <span>Unlimited</span></li>
+                                <li>JEEnius AI Doubt Solving <span>Unlimited</span></li>
+                                <li>Mock Tests <span>Unlimited</span></li>
+                            </ul>
+                        </div>
+                        <div class="plan-details-content" data-plan-details="pro-plus">
+                            <ul class="pricing-features">
+                                <li><i class="fa-solid fa-check"></i> All features unlimited</li>
+                                <li><i class="fa-solid fa-check"></i> Priority Support + mentor callbacks</li>
+                                <li><i class="fa-solid fa-check"></i> Deep-dive analytics & duel insights</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-grid" data-plan-group="annual">
+                <div class="pricing-card" data-plan="free-annual">
+                    <h3>Free</h3>
+                    <div class="price">₹0</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 24px;">Get a taste of most of JEEnius AI features.</p>
+                    <a href="#" class="btn btn-secondary btn-full" data-cta="true">Get Started</a>
+                    
+                    <div class="plan-body">
+                        <div class="plan-metrics">
+                            <h4>Low Limits</h4>
+                            <ul>
+                                <li>Predicted Questions <span>50</span></li>
+                                <li>Image Doubt Uploads <span>15</span></li>
+                                <li>JEEnius AI Doubt Solving <span>500</span></li>
+                                <li>Mock Tests <span>30</span></li>
+                            </ul>
+                        </div>
+                        <div class="plan-exclusions">
+                            <ul>
+                                <li><i class="fa-solid fa-xmark" style="color: #EF4444;"></i> Study Plan Generation</li>
+                                <li><i class="fa-solid fa-xmark" style="color: #EF4444;"></i> Performance Analytics</li>
+                                <li><i class="fa-solid fa-xmark" style="color: #EF4444;"></i> Misconception Fixes</li>
+                                <li><i class="fa-solid fa-xmark" style="color: #EF4444;"></i> Priority Support</li>
+                            </ul>
+                        </div>
+                        <div class="plan-details-content" data-plan-details="free-annual">
+                            <ul class="pricing-features">
+                                <li><i class="fa-solid fa-check"></i> Question Intent Generation: 20 prompts</li>
+                                <li><i class="fa-solid fa-check"></i> Formula Analogy Walkthroughs: 10</li>
+                                <li><i class="fa-solid fa-check"></i> Daily Practice Paper Attempts: 15</li>
+                                <li><i class="fa-solid fa-check"></i> Keyword PYQ Search: 50 queries</li>
+                                <li><i class="fa-solid fa-check"></i> JEEnius Studio Forge Builds: 5</li>
+                                <li><i class="fa-solid fa-check"></i> Adaptive Practice Questions: 60</li>
+                                <li><i class="fa-solid fa-check"></i> Duel Matches: 60</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-card featured" data-plan="pro-annual">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">
+                        <s style="font-size: 1.6rem; color: rgba(255,255,255,0.6);">₹499</s>
+                        ₹249.5 <span>/month (₹2,994/year)</span>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.8);">50% off when billed annually.</p>
+                    <a href="#" class="btn btn-secondary btn-full" style="color: var(--primary); border: none;" data-cta="true">Start Yearly Plan</a>
+
+                    <div class="plan-body">
+                        <div class="plan-metrics" style="border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);">
+                            <h4 style="color: rgba(255,255,255,0.7);">Ample Limits</h4>
+                            <ul>
+                                <li>Predicted Questions <span style="color: rgba(255,255,255,0.8);">Unlimited</span></li>
+                                <li>Image Doubt Uploads <span style="color: rgba(255,255,255,0.8);">200</span></li>
+                                <li>JEEnius AI Doubt Solving <span style="color: rgba(255,255,255,0.8);">10,000</span></li>
+                                <li>Mock Tests <span style="color: rgba(255,255,255,0.8);">1,000</span></li>
+                            </ul>
+                        </div>
+                        <div class="plan-details-content" data-plan-details="pro-annual">
+                            <ul class="pricing-features">
+                                <li><i class="fa-solid fa-check"></i>Question Intent Generation: 500 prompts/mo</li>
+                                <li><i class="fa-solid fa-check"></i>Formula Analogy Walkthroughs: 100/mo</li>
+                                <li><i class="fa-solid fa-check"></i>Daily Practice Paper Attempts: 60/mo</li>
+                                <li><i class="fa-solid fa-check"></i>Keyword PYQ Search: 500 queries/mo</li>
+                                <li><i class="fa-solid fa-check"></i>Image Doubt Uploads: 200</li>
+                                <li><i class="fa-solid fa-check"></i>JEEnius AI Doubt Solving: 10,000</li>
+                                <li><i class="fa-solid fa-check"></i>JEEnius Studio Forge Builds: 60</li>
+                                <li><i class="fa-solid fa-check"></i>Adaptive Practice Questions: 1,000</li>
+                                <li><i class="fa-solid fa-check"></i>Duel Matches: 600</li>
+                                <li><i class="fa-solid fa-check"></i>Study Plan Generation: Included</li>
+                                <li><i class="fa-solid fa-check"></i>Performance Analytics: Pro-grade dashboards</li>
+                                <li><i class="fa-solid fa-check"></i>Misconception Fixes: 5,000/mo</li>
+                                <li><i class="fa-solid fa-check"></i>Priority Support: Included</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="plan-toggle" data-plan-toggle="pro-annual">
+                        <span>View Details</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+
+                <div class="pricing-card" data-plan="proplus-annual">
+                    <h3>Pro+</h3>
+                    <div class="price">
+                        <s style="font-size: 1.6rem; color: rgba(27,59,54,0.4);">₹999</s>
+                        ₹499.5 <span>/month (₹5,994/year)</span>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-bottom: 24px;">Droppers + Advanced prep with no caps.</p>
+                    <a href="#" class="btn btn-primary btn-full" data-cta="true">Upgrade Yearly</a>
+                    
+                    <div class="plan-body">
+                        <div class="plan-metrics">
+                            <h4>No Limits</h4>
+                            <ul>
+                                <li>Predicted Questions <span>Unlimited</span></li>
+                                <li>Image Doubt Uploads <span>Unlimited</span></li>
+                                <li>JEEnius AI Doubt Solving <span>Unlimited</span></li>
+                                <li>Mock Tests <span>Unlimited</span></li>
+                            </ul>
+                        </div>
+                        <div class="plan-details-content" data-plan-details="proplus-annual">
+                            <ul class="pricing-features">
+                                <li><i class="fa-solid fa-check"></i> All features unlimited</li>
+                                <li><i class="fa-solid fa-check"></i> Priority Support + mentor callbacks</li>
+                                <li><i class="fa-solid fa-check"></i> Deep-dive analytics & duel insights</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Students We’ve Guided</h2>
+                <p style="margin-top: 16px;">Every win is different, but the confidence is the same.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"JEEnius told me exactly which PYQs to redo. My mock score jumped 32 marks in just 4 weeks."</p>
+                    <span>— Riya, Class 12 Aspirant</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The Live Duels made revision addictive. I logged in for 5 minutes and ended up solving 40 questions."</p>
+                    <span>— Anirudh, Dropper</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The PYQs library is amazing. I can filter by difficulty and topic which helps me focus on weak areas."</p>
+                    <span>— Priya S., Class 12, Delhi</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The mock tests feel exactly like the real exam. It helped me tackle the exam fear on D-day."</p>
+                    <span>— Anita K., Class 12, Bangalore</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Why does the AI take a few seconds to answer?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Unlike basic bots that give generic answers instantly, JEEnius AI "thinks" through the problem using complex reasoning models (like o-series and Fathom AI) to ensure the solution is accurate and easy to understand. Quality takes time.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is this reliable for JEE Advanced?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Yes. Our engine includes Fathom AI, which is famous for achieving a perfect score in JEE Advanced 2025. It is specifically trained on high-level concepts.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I use this with my coaching?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Absolutely. You don’t need to set anything up. Just use the app for self-study, and the AI will automatically adjust your schedule to fit your coaching gaps.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-cta">
+                <div>
+                    <h2 style="color: white; margin-bottom: 12px;">The 2026 Exam Paper is Being Written.</h2>
+                    <p style="color: var(--accent); font-size: 1.1rem;">Join 5,000+ students who are already solving it.</p>
+                </div>
+                <a href="#prediction-lab" class="btn btn-secondary" style="border: none;" data-cta="true">View 2026 Prediction</a>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color: white; margin-bottom: 20px;">
+                        <div class="logo-icon" style="background: rgba(255,255,255,0.1);">
+                            <img src="jeenius.webp" alt="JEEnius logo">
+                        </div>
+                        JEEnius AI
+                    </div>
+                    <p style="color: rgba(255,255,255,0.6); max-width: 300px;">
+                        The only engine fine-tuned on 20+ years of papers, Kota-level notes, and winning strategies. Built for the future of learning.
+                    </p>
+                </div>
+
+                <div class="footer-col footer-links">
+                    <div class="footer-link-col">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#prediction-lab">2026 Prediction</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#features">AI Tutor</a></li>
+                            <li><a href="#adaptive-flow">Adaptive Flow</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="mailto:stash.ai.tech@gmail.com">Contact Us</a></li>
+                            <li><a href="https://ai.jeenius.tech/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></li>
+                            <li><a href="https://ai.jeenius.tech/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a></li>
+                            <li><a href="https://ai.jeenius.tech/refund-policy/" target="_blank" rel="noopener">Cancellation Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <div>&copy; 2025 JEEnius AI. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                item.classList.toggle('active');
+            });
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 4px 20px -2px rgba(27, 59, 54, 0.06)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.85)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+const insights = [
+    {"insight":"Expect 2026 Main to revive relation-count questions that mix symmetric-line equivalence in ℝ² with rational constraints, extending the 2024–25 Sets/Relations push toward geometry-infused counting.","tags":["Mathematics","HighYield","MixedConcept"]},
+    {"insight":"Parameter-driven complex loci with optimisation or probability add-ons should surface as NAT items, mirroring the 2025 complex-number trend of blending geometry with counting.","tags":["Mathematics","Challenger","ProbGeo"]},
+    {"insight":"Look for continuity/differentiability questions that demand integer-answer optimisation under radical/log constraints—the 2023–25 streak of counting non-differentiable points isn’t slowing down.","tags":["Mathematics","HighYield","Calculus"]},
+    {"insight":"Multi-stage integral equations with nested differentiation (seen in 2025) are primed to appear again, likely as fill-in-the-blank definite integrals with hybrid algebraic parameters.","tags":["Mathematics","IntegralCalculus","NAT"]},
+    {"insight":"Differential-equation problems will probably require solving the DE and then evaluating chained expressions (y′, y″, limiting values), following the 2024–25 multi-step evaluation shift.","tags":["Mathematics","DifferentialEquations","Precision"]},
+    {"insight":"Coordinate-geometry items embedding combinatorial sums or symbolic coefficients inside line/conic equations should recur, so be ready for orthocentre/circumcentre optimisation without options.","tags":["Mathematics","Geometry","HighYield"]},
+    {"insight":"Cross-fertilisation of statistics and probability—variance transforms leading straight into tailored RV questions—remains hot, so expect Bayesian–variance hybrids with algebraic preprocessing.","tags":["Mathematics","Statistics","ProbBlend"]},
+    {"insight":"Kinematics graphs asking for maximum crossing counts or qualitative multi-crossing reasoning are likely to expand, building on the 2024–25 graph-centric NAT focus.","tags":["Physics","Kinematics","GraphHeavy"]},
+    {"insight":"Work/Energy questions featuring variable mass systems or assertion-reason probes on power are poised to continue, so prep for conceptual write-ups instead of plug-and-chug.","tags":["Physics","WorkEnergy","Conceptual"]},
+    {"insight":"Rotational Motion should again deliver MI-of-modified-body blanks plus ratio comparatives, possibly pairing rolling acceleration with energy losses as in 2024–25.","tags":["Physics","RotationalMotion","HighYield"]},
+    {"insight":"Gravitation is trending toward assertion-reason questions on inside-body fields with cavities or removed sections; anticipate follow-up NAT demanding precise dimensional reasoning.","tags":["Physics","Gravitation","Reasoning"]},
+    {"insight":"Thermodynamics cycles will likely be graph-heavy multi-step journeys with reversibility judgments, including unusual γ values to prevent rote memorisation.","tags":["Physics","Thermodynamics","GraphHeavy"]},
+    {"insight":"Oscillations/Waves are moving toward real-world SHM analogues (floating blocks, stretched wires) plus damping/resonance reasoning, so expect assertion-reason plus quick SHM numericals.","tags":["Physics","SHM","MixedConcept"]},
+    {"insight":"Electrostatics should keep fusing dipoles, capacitors, and dimensional analysis, so prepare for cross-topic NAT that rewards unit reasoning over brute force.","tags":["Physics","Electrostatics","Fusion"]},
+    {"insight":"Current Electricity will likely carry forward assertion–reason and multiple-correct items tying battery combinations to instrument tweaks; precision over shortcuts will be rewarded.","tags":["Physics","CurrentElectricity","Reasoning"]},
+    {"insight":"Magnetism is on a graph-based Ampere’s law streak; anticipate integer-type problems requiring careful interpretation of B–r plots or solenoid cross-sections.","tags":["Physics","Magnetism","GraphHeavy"]},
+    {"insight":"Expect EMI/AC questions that stitch displacement current, inductance quantisation, and energy tracking in one go, echoing the 2025 concept-combo numericals.","tags":["Physics","EMI","MixedConcept"]},
+    {"insight":"Optics is trending toward integrated lens–mirror setups with polarization or interference tweaks, so 2026 likely features single-step MCQs concealing multi-concept reasoning.","tags":["Physics","Optics","HighYield"]},
+    {"insight":"Chemical Kinetics should keep coupling activation-energy data with half-life or pressure monitoring in single integer questions, demanding flawless unit management.","tags":["Chemistry","Kinetics","Precision"]},
+    {"insight":"Hydrocarbon questions are expected to retain assertion-style checks plus exact-integer fill-in-the-blank demands on stereochemistry or π-electron counts.","tags":["Chemistry","Organic","HighYield"]}
+];
+
+const insightTextEl = document.getElementById('insightText');
+const insightTagsEl = document.getElementById('insightTags');
+const insightPrevBtn = document.getElementById('insightPrev');
+const insightNextBtn = document.getElementById('insightNext');
+let currentInsight = 0;
+let insightInterval;
+
+function renderInsight(index) {
+    if (!insightTextEl || !insightTagsEl) return;
+    const item = insights[index];
+    insightTextEl.innerHTML = `"${item.insight}"`;
+    insightTagsEl.innerHTML = item.tags.map(tag => `<span class="tag">#${tag}</span>`).join('');
+}
+
+function goToInsight(index) {
+    currentInsight = (index + insights.length) % insights.length;
+    renderInsight(currentInsight);
+    restartInsightInterval();
+}
+
+function restartInsightInterval() {
+    if (insightInterval) clearInterval(insightInterval);
+    insightInterval = setInterval(() => {
+        goToInsight(currentInsight + 1);
+    }, 6000);
+}
+
+if (insights.length && insightTextEl && insightTagsEl) {
+    renderInsight(currentInsight);
+    restartInsightInterval();
+    if (insightPrevBtn) insightPrevBtn.addEventListener('click', () => goToInsight(currentInsight - 1));
+    if (insightNextBtn) insightNextBtn.addEventListener('click', () => goToInsight(currentInsight + 1));
+}
+
+const planDetailsSections = document.querySelectorAll('.plan-details-content');
+const planDetailButtons = document.querySelectorAll('.plan-toggle');
+const ctaButtons = document.querySelectorAll('[data-cta="true"]');
+
+function setPlanDetails(open) {
+    planDetailsSections.forEach(section => {
+        section.classList.toggle('open', open);
+    });
+    planDetailButtons.forEach(button => {
+        button.classList.toggle('open', open);
+        const label = button.querySelector('span');
+        if (label) label.textContent = open ? 'Hide Details' : 'View Details';
+    });
+}
+
+planDetailButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const willOpen = !button.classList.contains('open');
+        setPlanDetails(willOpen);
+        const label = (button.dataset.planToggle || 'plan-details').toString();
+        trackInteraction(label, 'details_toggle');
+    });
+});
+
+// Animated graph inside AI tutor visual
+const graphCanvas = document.getElementById('aiGraphCanvas');
+const fbdCanvas = document.getElementById('fbdCanvas');
+if (graphCanvas) {
+    const ctx = graphCanvas.getContext('2d');
+    const width = graphCanvas.width;
+    const height = graphCanvas.height;
+    let offset = 0;
+
+    function drawGraph() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw grid
+        ctx.strokeStyle = 'rgba(27,59,54,0.08)';
+        ctx.lineWidth = 1;
+        for (let x = 0; x <= width; x += 30) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+        for (let y = 0; y <= height; y += 20) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+
+        // Angular velocity curve
+        ctx.strokeStyle = '#0f766e';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let x = 0; x <= width; x++) {
+            const y = height / 2 + Math.sin((x + offset) * 0.04) * 20;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Linear velocity curve
+        ctx.strokeStyle = '#d97706';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let x = 0; x <= width; x++) {
+            const y = height / 2 + Math.cos((x + offset) * 0.05) * 12;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        offset += 2;
+        requestAnimationFrame(drawGraph);
+    }
+
+    drawGraph();
+}
+
+if (fbdCanvas) {
+    const fbdCtx = fbdCanvas.getContext('2d');
+    const { width, height } = fbdCanvas;
+
+    function drawFBD() {
+        fbdCtx.clearRect(0, 0, width, height);
+
+        const planeAngle = -Math.PI / 6; // -30°
+        const baseX = 15;
+        const baseY = height - 10;
+        const planeLength = width - 30;
+        const topX = baseX + planeLength * Math.cos(planeAngle);
+        const topY = baseY + planeLength * Math.sin(planeAngle);
+
+        // Inclined plane
+        fbdCtx.fillStyle = '#dcefd8';
+        fbdCtx.beginPath();
+        fbdCtx.moveTo(baseX, baseY);
+        fbdCtx.lineTo(topX, topY);
+        fbdCtx.lineTo(topX, baseY);
+        fbdCtx.closePath();
+        fbdCtx.fill();
+
+        // Block
+        const blockSize = 26;
+        const blockCenterX = baseX + planeLength * 0.5 * Math.cos(planeAngle);
+        const blockCenterY = baseY + planeLength * 0.5 * Math.sin(planeAngle);
+        const blockX = blockCenterX - blockSize / 2;
+        const blockY = blockCenterY - blockSize / 2;
+        fbdCtx.fillStyle = '#1B3B36';
+        fbdCtx.fillRect(blockX, blockY, blockSize, blockSize);
+
+        function drawArrow(ctx, fromX, fromY, toX, toY, color) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(fromX, fromY);
+            ctx.lineTo(toX, toY);
+            ctx.stroke();
+            const headLen = 8;
+            const angle = Math.atan2(toY - fromY, toX - fromX);
+            ctx.beginPath();
+            ctx.moveTo(toX, toY);
+            ctx.lineTo(
+                toX - headLen * Math.cos(angle - Math.PI / 6),
+                toY - headLen * Math.sin(angle - Math.PI / 6)
+            );
+            ctx.moveTo(toX, toY);
+            ctx.lineTo(
+                toX - headLen * Math.cos(angle + Math.PI / 6),
+                toY - headLen * Math.sin(angle + Math.PI / 6)
+            );
+            ctx.stroke();
+        }
+
+        // Normal force (perpendicular)
+        const normalAngle = planeAngle + Math.PI / 2;
+        const normalStartX = blockCenterX + Math.cos(normalAngle) * 5;
+        const normalStartY = blockCenterY + Math.sin(normalAngle) * 5;
+        const normalEndX = normalStartX + Math.cos(normalAngle) * 50;
+        const normalEndY = normalStartY + Math.sin(normalAngle) * 50;
+        drawArrow(fbdCtx, normalStartX, normalStartY, normalEndX, normalEndY, '#1B3B36');
+
+        // Weight
+        drawArrow(fbdCtx, blockCenterX, blockCenterY, blockCenterX, blockCenterY + 55, '#1B3B36');
+
+        // Tension along plane
+        const tensionAngle = planeAngle;
+        const tensionEndX = blockCenterX + Math.cos(tensionAngle) * 50;
+        const tensionEndY = blockCenterY + Math.sin(tensionAngle) * 50;
+        drawArrow(fbdCtx, blockCenterX, blockCenterY, tensionEndX, tensionEndY, '#1B3B36');
+
+        // Theta marking
+        fbdCtx.strokeStyle = '#1B3B36';
+        fbdCtx.lineWidth = 1.5;
+        fbdCtx.beginPath();
+        fbdCtx.arc(baseX, baseY, 18, 0, planeAngle, true);
+        fbdCtx.stroke();
+
+        // Labels
+        fbdCtx.fillStyle = '#1B3B36';
+        fbdCtx.font = '12px "Plus Jakarta Sans", sans-serif';
+        fbdCtx.fillText('θ', baseX + 16, baseY - 6);
+        fbdCtx.fillText('N', normalEndX + 4, normalEndY - 4);
+        fbdCtx.fillText('mg', blockCenterX + 4, blockCenterY + 65);
+        fbdCtx.fillText('T', tensionEndX - 12, tensionEndY - 6);
+    }
+
+    drawFBD();
+}
+
+// Pricing toggle
+const pricingToggleButtons = document.querySelectorAll('[data-pricing-toggle]');
+const monthlyPlans = document.querySelector('[data-plan-group="monthly"]');
+const annualPlans = document.querySelector('[data-plan-group="annual"]');
+const trackInteraction = (label, type = 'cta') => {
+    if (window.posthog) {
+        try { posthog.capture('landing_page_interaction', { label, type }); } catch (e) { }
+    }
+    if (window.firebaseAnalytics) {
+        try { firebaseAnalytics.logEvent('landing_page_interaction', { label, type }); } catch (e) { }
+    }
+};
+
+function setPricingMode(mode) {
+    if (!monthlyPlans || !annualPlans) return;
+    if (mode === 'annual') {
+        monthlyPlans.style.display = 'none';
+        annualPlans.style.display = 'grid';
+        if (typeof setPlanDetails === 'function') {
+            setPlanDetails(false);
+        }
+    } else {
+        monthlyPlans.style.display = 'grid';
+        annualPlans.style.display = 'none';
+    }
+}
+
+if (monthlyPlans) monthlyPlans.style.display = 'grid';
+if (annualPlans) annualPlans.style.display = 'none';
+
+pricingToggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        pricingToggleButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        setPricingMode(btn.dataset.pricingToggle);
+        trackInteraction(`pricing_${btn.dataset.pricingToggle}`, 'toggle');
+    });
+});
+
+function getRedirectUrl() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isAndroid = /android/i.test(userAgent);
+    return isAndroid ? 'https://play.google.com/store/apps/details?id=com.stash.jeenius&hl=en_IN' : 'https://jeenius.tech';
+}
+
+ctaButtons.forEach(button => {
+    button.addEventListener('click', event => {
+        event.preventDefault();
+        const targetUrl = getRedirectUrl();
+        const label = (button.dataset.trackLabel || button.innerText || '').trim();
+        trackInteraction(label, 'cta');
+        window.open(targetUrl, '_blank');
+    });
+});
+
+document.querySelectorAll('button, a').forEach(el => {
+    el.addEventListener('click', () => {
+        const label = (el.innerText || el.getAttribute('aria-label') || 'button').trim();
+        trackInteraction(label || 'interaction', 'click');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    trackInteraction('page_loaded', 'page');
+});
+    </script>
+</body>
+</html>
