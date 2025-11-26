@@ -1,25 +1,55 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JEEnius AI | Train With Future Papers</title>
-    
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="jeenius.webp">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="JEEnius AI | 2026 JEE Paper Predictions">
+    <meta property="og:description"
+        content="Solve 500+ questions likely to appear in JEE Main 2026. One Kota-Level AI Mentor trained on 20+ years of papers.">
+    <meta property="og:image" content="https://ai.jeenius.tech/jeenius/landing/jeenius.webp">
+    <meta property="og:url" content="https://ai.jeenius.tech">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="JEEnius AI">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JEEnius AI | 2026 JEE Paper Predictions">
+    <meta name="twitter:description"
+        content="Solve 500+ questions likely to appear in JEE Main 2026. One Kota-Level AI Mentor trained on 20+ years of papers.">
+    <meta name="twitter:image" content="https://ai.jeenius.tech/jeenius/landing/jeenius.webp">
+
+    <!-- General Meta -->
+    <meta name="description"
+        content="JEEnius AI - The only JEE-trained AI mentor with 2026 paper predictions. 500+ predicted questions, 24/7 doubt solving, and Kota-level guidance.">
+    <meta name="keywords" content="JEE preparation, JEE 2026, AI tutor, JEE predictions, mock tests, doubt solving">
+
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- CSS Variables & Reset --- */
         :root {
-            --primary: #1B3B36; /* Deep Forest Green */
+            --primary: #1B3B36;
+            /* Deep Forest Green */
             --primary-hover: #244A44;
-            --secondary: #E8F5E9; /* Pale Mint */
-            --accent: #DCEFD8; /* Solarpunk Light Green */
-            --bg-body: #FAFCFA; /* Off-white organic background */
+            --secondary: #E8F5E9;
+            /* Pale Mint */
+            --accent: #DCEFD8;
+            /* Solarpunk Light Green */
+            --bg-body: #FAFCFA;
+            /* Off-white organic background */
             --surface: #FFFFFF;
             --text-main: #0F201D;
             --text-muted: #5C706C;
@@ -40,6 +70,8 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            max-width: 100%;
         }
 
         body {
@@ -48,6 +80,9 @@
             color: var(--text-main);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            max-width: 100vw;
+            position: relative;
         }
 
         a {
@@ -65,36 +100,97 @@
             max-width: var(--container-width);
             margin: 0 auto;
             padding: 0 24px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .flex { display: flex; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .justify-center { justify-content: center; }
-        .flex-col { flex-direction: column; }
-        .grid { display: grid; }
-        .gap-4 { gap: 1rem; }
-        .gap-8 { gap: 2rem; }
-        .text-center { text-align: center; }
-        .hidden { display: none; }
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
 
         /* --- Typography --- */
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             color: var(--text-main);
             font-weight: 700;
             letter-spacing: -0.03em;
             line-height: 1.2;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.5rem; }
-        h3 { font-size: 1.5rem; }
-        
-        p { color: var(--text-muted); }
+        h1 {
+            font-size: 3.5rem;
+            max-width: 100%;
+        }
 
-        .text-primary { color: var(--primary); }
-        .text-accent { color: var(--accent); }
-        .font-bold { font-weight: 700; }
+        h2 {
+            font-size: 2.5rem;
+            max-width: 100%;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            max-width: 100%;
+        }
+
+        p {
+            color: var(--text-muted);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
 
         /* --- Buttons --- */
         .btn {
@@ -138,6 +234,7 @@
             top: 0;
             left: 0;
             width: 100%;
+            max-width: 100vw;
             height: 80px;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.85);
@@ -145,6 +242,7 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(27, 59, 54, 0.05);
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
         .nav-container {
@@ -211,6 +309,8 @@
             position: relative;
             overflow: hidden;
             background: radial-gradient(circle at 50% 0%, #F1F8E9 0%, #FAFCFA 70%);
+            max-width: 100vw;
+            box-sizing: border-box;
         }
 
         .hero-grid {
@@ -234,6 +334,8 @@
             letter-spacing: 0.05em;
             color: var(--primary);
             margin-bottom: 24px;
+            white-space: nowrap;
+            max-width: 100%;
         }
 
         .hero-content h1 span {
@@ -259,12 +361,15 @@
             font-size: 1.15rem;
             margin: 24px 0 32px;
             max-width: 540px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .hero-actions {
             display: flex;
             gap: 16px;
             margin-bottom: 48px;
+            flex-wrap: wrap;
         }
 
         .trust-anchors {
@@ -272,7 +377,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
             padding-top: 32px;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .trust-item .number {
@@ -316,6 +421,10 @@
             box-shadow: var(--shadow-card);
             border: 1px solid rgba(255, 255, 255, 0.6);
             z-index: 1;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
         }
 
         .card-header {
@@ -365,10 +474,27 @@
             padding: 16px 0;
             border-bottom: 1px solid #F3F4F6;
             font-size: 0.9rem;
+            gap: 12px;
+            align-items: flex-start;
         }
 
-        .stat-label { font-weight: 500; color: var(--text-muted); }
-        .stat-value { font-weight: 700; color: var(--text-main); }
+        .stat-label {
+            font-weight: 500;
+            color: var(--text-muted);
+            flex: 1;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            min-width: 0;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--text-main);
+            text-align: right;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            flex-shrink: 0;
+        }
 
         .progress-container {
             margin-top: 16px;
@@ -422,6 +548,8 @@
             font-weight: 500;
             color: var(--text-main);
             transition: opacity 0.3s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .tags {
@@ -519,7 +647,7 @@
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 24px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
         }
 
         /* --- Features Section --- */
@@ -537,17 +665,34 @@
             margin-bottom: 120px;
         }
 
-        .feature-block:last-child { margin-bottom: 0; }
+        .feature-block:last-child {
+            margin-bottom: 0;
+        }
 
-        .feature-block.reverse .feature-content { order: 2; }
-        .feature-block.reverse .feature-visual { order: 1; }
+        .feature-block.reverse .feature-content {
+            order: 2;
+        }
 
-        .feature-list { margin-top: 30px; }
+        .feature-block.reverse .feature-visual {
+            order: 1;
+        }
+
+        .feature-list {
+            margin-top: 30px;
+        }
 
         .feature-item {
             display: flex;
             gap: 16px;
             margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .feature-item>div:not(.check-icon) {
+            flex: 1;
+            min-width: 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .check-icon {
@@ -573,11 +718,11 @@
             border-radius: var(--radius-xl);
             padding: 12px;
             box-shadow: var(--shadow-card);
-            border: 1px solid rgba(255,255,255,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             transform: rotate(-2deg);
             transition: transform 0.3s;
         }
-        
+
         .feature-block:hover .visual-card {
             transform: rotate(0deg);
         }
@@ -650,7 +795,7 @@
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 14px;
         }
-        
+
 
         .ai-panel {
             background: white;
@@ -678,12 +823,14 @@
             border-radius: 14px;
             background: #f3f7f3;
             overflow: hidden;
-            border: 1px solid rgba(27,59,54,0.08);
+            border: 1px solid rgba(27, 59, 54, 0.08);
         }
 
         .graph-line canvas {
             position: absolute;
             inset: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .equation {
@@ -712,24 +859,49 @@
         }
 
         @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
         }
 
         @keyframes caretBlink {
-            from, to { border-color: transparent; }
-            50% { border-color: rgba(27, 59, 54, 0.7); }
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: rgba(27, 59, 54, 0.7);
+            }
         }
 
         @keyframes pulseDot {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
-            70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
         }
 
         @keyframes sweep {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
 
         .feature-cards {
@@ -743,7 +915,7 @@
             border-radius: 24px;
             padding: 32px;
             box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(27,59,54,0.05);
+            border: 1px solid rgba(27, 59, 54, 0.05);
         }
 
         .feature-card-icon {
@@ -868,15 +1040,15 @@
             z-index: 10;
         }
 
-        .pricing-card.featured h3, 
-        .pricing-card.featured .price, 
+        .pricing-card.featured h3,
+        .pricing-card.featured .price,
         .pricing-card.featured p,
         .pricing-card.featured li {
             color: white;
         }
-        
+
         .pricing-card.featured .text-muted {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .price {
@@ -962,8 +1134,8 @@
         }
 
         .pricing-card.featured .plan-toggle {
-            border-color: rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
             color: var(--accent);
         }
 
@@ -982,7 +1154,7 @@
             background: white;
             border-radius: 24px;
             padding: 24px;
-            border: 1px solid rgba(27,59,54,0.08);
+            border: 1px solid rgba(27, 59, 54, 0.08);
             box-shadow: var(--shadow-soft);
             font-size: 0.95rem;
             color: var(--text-main);
@@ -1010,7 +1182,7 @@
 
         .pricing-toggle-group {
             display: inline-flex;
-            border: 1px solid rgba(27,59,54,0.1);
+            border: 1px solid rgba(27, 59, 54, 0.1);
             border-radius: 999px;
             padding: 4px;
             background: white;
@@ -1031,7 +1203,7 @@
         .pricing-toggle-group button.active {
             background: var(--primary);
             color: white;
-            box-shadow: 0 8px 16px rgba(27,59,54,0.2);
+            box-shadow: 0 8px 16px rgba(27, 59, 54, 0.2);
         }
 
         [data-plan-group="annual"] {
@@ -1091,32 +1263,34 @@
         }
 
         .popular-tag {
-        .plan-exclusions {
-            margin: 0;
-            padding-top: 16px;
-            border-top: 1px solid rgba(27,59,54,0.08);
-        }
-        .pricing-card .btn-full {
-            margin-top: 16px;
-        }
+            .plan-exclusions {
+                margin: 0;
+                padding-top: 16px;
+                border-top: 1px solid rgba(27, 59, 54, 0.08);
+            }
+
+            .pricing-card .btn-full {
+                margin-top: 16px;
+            }
 
 
-        .plan-exclusions ul {
-            list-style: none;
-        }
+            .plan-exclusions ul {
+                list-style: none;
+            }
 
-        .plan-exclusions li {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-        }
+            .plan-exclusions li {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.9rem;
+                color: var(--text-muted);
+                margin-bottom: 6px;
+            }
 
-        .plan-exclusions i {
-            color: #EF4444 !important;
-        }
+            .plan-exclusions i {
+                color: #EF4444 !important;
+            }
+
             position: absolute;
             top: -15px;
             left: 50%;
@@ -1189,7 +1363,7 @@
             justify-content: space-between;
             align-items: center;
             padding-bottom: 60px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 60px;
         }
 
@@ -1198,6 +1372,7 @@
             grid-template-columns: 2fr 2fr;
             gap: 60px;
         }
+
         .footer-links {
             display: grid;
             grid-template-columns: repeat(2, minmax(160px, 1fr));
@@ -1221,7 +1396,7 @@
         }
 
         .footer-col ul li a {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
         }
 
@@ -1232,56 +1407,623 @@
         .copyright {
             margin-top: 60px;
             padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.8rem;
         }
 
         /* --- Animations --- */
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
         }
 
         /* --- Responsive --- */
         @media (max-width: 1024px) {
-            h1 { font-size: 2.8rem; }
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero-content { text-align: center; }
-            .hero-actions { justify-content: center; }
-            .hero-desc { margin-left: auto; margin-right: auto; }
-            .trust-anchors { justify-content: center; }
-            .feature-block { grid-template-columns: 1fr; gap: 40px; }
-            .feature-block.reverse .feature-content { order: 1; }
-            .feature-block.reverse .feature-visual { order: 2; }
-            .feature-cards { grid-template-columns: 1fr; }
-            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
-            .pricing-card.featured { transform: scale(1); }
-            .steps-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-            .steps-line { display: none; }
-            .footer-cta { flex-direction: column; text-align: center; gap: 30px; }
-            .footer-grid { grid-template-columns: 1fr; }
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .trust-anchors {
+                justify-content: center;
+            }
+
+            .feature-block {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .feature-block.reverse .feature-content {
+                order: 1;
+            }
+
+            .feature-block.reverse .feature-visual {
+                order: 2;
+            }
+
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .steps-line {
+                display: none;
+            }
+
+            .footer-cta {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-panels {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-inner {
+                padding: 24px;
+            }
         }
 
         @media (max-width: 768px) {
-            .nav-links, .nav-cta { display: none; }
-            .mobile-menu-btn { display: block; }
-            .usp-grid { grid-template-columns: 1fr; }
-            .feature-cards { grid-template-columns: 1fr; }
-            .steps-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.2rem; }
-            .hero { padding-top: 120px; }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            /* Prevent horizontal overflow */
+            html,
+            body {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+
+            .navbar,
+            .hero,
+            .container,
+            section {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+
+            .usp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+
+            .hero-desc {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+
+            .hero-badge {
+                font-size: 0.7rem;
+                padding: 6px 12px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero-card {
+                padding: 24px;
+            }
+
+            .stat-row {
+                font-size: 0.85rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .stat-value {
+                font-size: 0.85rem;
+            }
+
+            .trust-anchors {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .trust-item .number {
+                font-size: 1.3rem;
+            }
+
+            .trust-item .label {
+                font-size: 0.7rem;
+            }
+
+            .usp-section,
+            .features-section,
+            .steps-section,
+            .pricing-section,
+            .testimonial-section,
+            .faq-section {
+                padding: 60px 0;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .usp-card,
+            .feature-card {
+                padding: 24px;
+            }
+
+            .feature-list {
+                margin-top: 20px;
+            }
+
+            .feature-item {
+                font-size: 0.9rem;
+                gap: 12px;
+            }
+
+            .feature-item>div:not(.check-icon) {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .visual-inner {
+                padding: 20px;
+                min-height: 280px;
+            }
+
+            .ai-chat {
+                padding: 14px;
+                font-size: 0.85rem;
+            }
+
+            .ai-panels {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .ai-panel {
+                padding: 12px;
+            }
+
+            .pricing-toggle-group {
+                flex-direction: row;
+            }
+
+            .pricing-toggle-group button {
+                font-size: 0.9rem;
+                padding: 8px 14px;
+            }
+
+            .pricing-card {
+                padding: 28px 20px;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .plan-metrics {
+                padding: 16px;
+            }
+
+            .plan-metrics li {
+                font-size: 0.85rem;
+            }
+
+            .pricing-features li {
+                font-size: 0.85rem;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+                font-size: 0.9rem;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+                padding: 18px;
+            }
+
+            .faq-answer {
+                font-size: 0.9rem;
+                padding: 0 18px 18px;
+            }
+
+            footer {
+                padding: 60px 0 30px;
+            }
+
+            .footer-cta h2 {
+                font-size: 1.5rem;
+            }
+
+            .footer-cta p {
+                font-size: 1rem;
+            }
+
+            .insight-slider {
+                min-height: 140px;
+            }
+
+            .insight-text {
+                font-size: 0.85rem;
+            }
         }
-        
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+                line-height: 1.25;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+                line-height: 1.3;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .hero {
+                padding-top: 100px;
+                padding-bottom: 50px;
+            }
+
+            .hero-badge {
+                font-size: 0.6rem;
+                padding: 4px 10px;
+                gap: 4px;
+                letter-spacing: 0.02em;
+            }
+
+            .hero-desc {
+                font-size: 0.95rem;
+                max-width: 100%;
+            }
+
+            .btn {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+                white-space: normal;
+                text-align: center;
+            }
+
+            .hero-actions {
+                gap: 12px;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .hero-card {
+                padding: 16px;
+                border-radius: 20px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .card-header h3 {
+                font-size: 0.95rem !important;
+            }
+
+            .stat-row {
+                font-size: 0.75rem;
+                padding: 10px 0;
+                gap: 8px;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            .stat-value {
+                font-size: 0.75rem;
+            }
+
+            .insight-text {
+                font-size: 0.75rem;
+            }
+
+            .tag {
+                font-size: 0.6rem;
+                padding: 3px 6px;
+            }
+
+            .trust-anchors {
+                gap: 12px;
+            }
+
+            .trust-item .number {
+                font-size: 1.2rem;
+            }
+
+            .trust-item .label {
+                font-size: 0.65rem;
+            }
+
+            .usp-card {
+                padding: 20px;
+            }
+
+            .usp-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+
+            .feature-item {
+                font-size: 0.85rem;
+                gap: 10px;
+            }
+
+            .feature-item>div:not(.check-icon) {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .visual-inner {
+                padding: 16px;
+                min-height: 240px;
+            }
+
+            .ai-chat {
+                padding: 12px;
+                font-size: 0.8rem;
+            }
+
+            .ai-question {
+                font-size: 0.85rem;
+            }
+
+            .ai-typing {
+                font-size: 0.8rem;
+            }
+
+            .ai-panel {
+                padding: 10px;
+            }
+
+            .ai-panel h5 {
+                font-size: 0.7rem;
+            }
+
+            .equation {
+                font-size: 0.75rem;
+            }
+
+            .pricing-card {
+                padding: 24px 16px;
+            }
+
+            .price {
+                font-size: 2.2rem;
+            }
+
+            .plan-metrics {
+                padding: 14px;
+            }
+
+            .plan-metrics h4 {
+                font-size: 0.75rem;
+            }
+
+            .plan-metrics li {
+                font-size: 0.8rem;
+            }
+
+            .pricing-features li {
+                font-size: 0.8rem;
+            }
+
+            .plan-toggle {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+
+            .testimonial-card {
+                padding: 18px;
+                font-size: 0.85rem;
+            }
+
+            .faq-question {
+                font-size: 0.95rem;
+                padding: 16px;
+            }
+
+            .faq-answer {
+                font-size: 0.85rem;
+                padding: 0 16px 16px;
+            }
+
+            .footer-cta h2 {
+                font-size: 1.3rem;
+            }
+
+            .footer-cta p {
+                font-size: 0.95rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-header p {
+                font-size: 0.95rem;
+            }
+
+            .live-badge {
+                font-size: 0.6rem;
+                padding: 4px 8px;
+            }
+        }
+
+        /* Extra small devices - more aggressive fixes */
+        @media (max-width: 390px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-badge {
+                font-size: 0.55rem;
+                padding: 4px 8px;
+                gap: 4px;
+            }
+
+            .hero-desc {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 0.8rem;
+                padding: 10px 16px;
+            }
+
+            .hero-card {
+                padding: 14px;
+            }
+
+            .stat-row {
+                font-size: 0.7rem;
+                padding: 8px 0;
+            }
+
+            .stat-label,
+            .stat-value {
+                font-size: 0.7rem;
+            }
+
+            .card-header h3 {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         /* Mobile Menu Overlay */
         .mobile-menu {
             position: fixed;
@@ -1290,12 +2032,15 @@
             width: 100%;
             background: white;
             padding: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             display: none;
             z-index: 999;
         }
-        
-        .mobile-menu.open { display: block; }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
         .mobile-menu a {
             display: block;
             padding: 15px 0;
@@ -1345,6 +2090,7 @@
         })();
     </script>
 </head>
+
 <body>
 
     <!-- Navigation -->
@@ -1398,21 +2144,25 @@
                             Built by IITians with Love ❤️
                         </div>
                     </div>
-                    
+
                     <h1>
                         2026 JEE Paper Predictions. <br>
                         <span>One Kota-Level AI Mentor.</span>
                     </h1>
-                    
+
                     <p class="hero-desc">
-                        JEEnius AI is a JEE-only model trained on 20+ years of solved papers, Kota notes, and proven formulas—so answers land like a real mentor explaining the why.
+                        JEEnius AI is a JEE-only model trained on 20+ years of solved papers, Kota notes, and proven
+                        formulas—so answers land like a real mentor explaining the why.
                     </p>
-                    
+
                     <p class="hero-desc" style="margin-top: 12px;">
-                        <strong>Solve 500+ questions likely to appear in the next JEE Main 2026 paper</strong>—fresh mocks, drills, and topic mixes generated daily. Upload any JEE PDF (notes, PYQs, coaching modules) and JEEnius AI will analyze it, answer every question, and spin up fresh DPPs. Unlock 2026 Prediction to view the complete JEE 2026 forecast.
+                        <strong>Solve 500+ questions likely to appear in the next JEE Main 2026 paper</strong>—fresh
+                        mocks, drills, and topic mixes generated daily. Upload any JEE PDF (notes, PYQs, coaching
+                        modules) and JEEnius AI will analyze it, answer every question, and spin up fresh DPPs. Unlock
+                        2026 Prediction to view the complete JEE 2026 forecast.
                     </p>
-                    
-                    
+
+
                     <div class="hero-actions">
                         <a href="#prediction-lab" class="btn btn-primary" data-cta="true">
                             Unlock 2026 Prediction <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
@@ -1484,7 +2234,8 @@
                             </div>
                             <div class="insight-slider">
                                 <div class="insight-text" id="insightText">
-                                    "High probability of <strong>Rotation + Electrostatics</strong> mixed concept question in Paper 1 based on 2021-2024 trend shift."
+                                    "High probability of <strong>Rotation + Electrostatics</strong> mixed concept
+                                    question in Paper 1 based on 2021-2024 trend shift."
                                 </div>
                                 <div class="tags" id="insightTags">
                                     <span class="tag">#Physics</span>
@@ -1515,7 +2266,8 @@
             <div class="section-header">
                 <span class="section-subtitle">Why 2026 Prediction Wins</span>
                 <h2>The Only AI Mentored on 20+ Years of JEE</h2>
-                <p style="margin-top: 16px; font-size: 1.1rem;">Tap into 25-year solved papers, high-quality notes, formulas, and strategies. No tech jargon, just clear guidance that shows why each step works.</p>
+                <p style="margin-top: 16px; font-size: 1.1rem;">Tap into 25-year solved papers, high-quality notes,
+                    formulas, and strategies. No tech jargon, just clear guidance that shows why each step works.</p>
             </div>
 
             <div class="usp-grid">
@@ -1525,7 +2277,9 @@
                         <i class="fa-solid fa-bullseye"></i>
                     </div>
                     <h3>The 2026 Prediction Engine</h3>
-                    <p style="margin-top: 12px;">Runs probability models on 25-year data to create <strong>500+ questions likely to appear next year</strong>. Built on the best SOTA model engine tuned just for JEE, so every set feels like the actual paper.</p>
+                    <p style="margin-top: 12px;">Runs probability models on 25-year data to create <strong>500+
+                            questions likely to appear next year</strong>. Built on the best SOTA model engine tuned
+                        just for JEE, so every set feels like the actual paper.</p>
                 </div>
 
                 <!-- Card 2 -->
@@ -1534,7 +2288,12 @@
                         <i class="fa-solid fa-layer-group"></i>
                     </div>
                     <h3>The Super-Brain Stack</h3>
-                    <p style="margin-top: 12px;">JEEnius AI is the orchestrator—fine-tuned on 20+ years of JEE data and then supercharged by GPT-5 series, o-series, Gemini 2.5 & 3 Pro, plus <a href="https://huggingface.co/FractalAIResearch/Fathom-R1-14B?trk=public_post_comment-text" style="color: var(--primary); text-decoration: underline;">Fathom AI (perfect score JEE Adv 2025)</a>. The result feels like one specialist model that borrows the best instincts from every powerhouse.</p>
+                    <p style="margin-top: 12px;">JEEnius AI is the orchestrator—fine-tuned on 20+ years of JEE data and
+                        then supercharged by GPT-5 series, o-series, Gemini 2.5 & 3 Pro, plus <a
+                            href="https://huggingface.co/FractalAIResearch/Fathom-R1-14B?trk=public_post_comment-text"
+                            style="color: var(--primary); text-decoration: underline;">Fathom AI (perfect score JEE Adv
+                            2025)</a>. The result feels like one specialist model that borrows the best instincts from
+                        every powerhouse.</p>
                 </div>
 
                 <!-- Card 3 -->
@@ -1543,7 +2302,9 @@
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <h3>Practice Control Room</h3>
-                    <p style="margin-top: 12px;">Search any PYQ with normal keywords, mix topics, or <strong>generate brand-new custom questions matched to your exact need</strong>. It highlights misconception traps and shows FBDs, graphs, and formulas so you never repeat the same slip.</p>
+                    <p style="margin-top: 12px;">Search any PYQ with normal keywords, mix topics, or <strong>generate
+                            brand-new custom questions matched to your exact need</strong>. It highlights misconception
+                        traps and shows FBDs, graphs, and formulas so you never repeat the same slip.</p>
                 </div>
             </div>
         </div>
@@ -1552,7 +2313,7 @@
     <!-- Features Section -->
     <section id="features" class="features-section">
         <div class="container">
-            
+
             <!-- Feature 1 -->
             <div class="feature-block">
                 <div class="feature-content">
@@ -1561,35 +2322,42 @@
                     </div>
                     <h3>The AI Tutor: Better Than a Human Teacher</h3>
                     <p style="margin-top: 12px;">Get explanations that actually make sense. No generic bot answers.</p>
-                    
+
                     <ul class="feature-list">
                         <li class="feature-item">
                             <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-                            <div><strong>Deep-Dive Solutions:</strong> Step-by-step derivations, Free Body Diagrams (FBDs), graphs, and balanced reactions show why each option is right or wrong.</div>
+                            <div><strong>Deep-Dive Solutions:</strong> Step-by-step derivations, Free Body Diagrams
+                                (FBDs), graphs, and balanced reactions show why each option is right or wrong.</div>
                         </li>
                         <li class="feature-item">
                             <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-                            <div><strong>Quality Over Speed:</strong> Our AI "thinks" deeply to ensure pedagogical accuracy.</div>
+                            <div><strong>Quality Over Speed:</strong> Our AI "thinks" deeply to ensure pedagogical
+                                accuracy.</div>
                         </li>
                         <li class="feature-item">
                             <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-                            <div><strong>Misconception Alerts:</strong> The tutor highlights traps, fixes the formula step, and shows the corrected diagram before you move on.</div>
+                            <div><strong>Misconception Alerts:</strong> The tutor highlights traps, fixes the formula
+                                step, and shows the corrected diagram before you move on.</div>
                         </li>
                         <li class="feature-item">
                             <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-                            <div><strong>Next Paper Predictions:</strong> Preview likely question formats for the upcoming attempt, refreshed from 2026 Prediction daily.</div>
+                            <div><strong>Next Paper Predictions:</strong> Preview likely question formats for the
+                                upcoming attempt, refreshed from 2026 Prediction daily.</div>
                         </li>
                         <li class="feature-item">
                             <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-                            <div><strong>24/7 Kota Doubt Partner:</strong> Ask with text, voice, or images any time—responses stay teacher-grade even if they take a few extra seconds.</div>
+                            <div><strong>24/7 Kota Doubt Partner:</strong> Ask with text, voice, or images any
+                                time—responses stay teacher-grade even if they take a few extra seconds.</div>
                         </li>
                         <li class="feature-item">
                             <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-                            <div><strong>Instant Question Generation:</strong> Tell it “mix Rotation + Electrostatics + Gauss Law” and get ready-to-solve variations on the spot.</div>
+                            <div><strong>Instant Question Generation:</strong> Tell it “mix Rotation + Electrostatics +
+                                Gauss Law” and get ready-to-solve variations on the spot.</div>
                         </li>
                         <li class="feature-item">
                             <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-                            <div><strong>JEEnius Studio:</strong> Upload any JEE PDF (notes, PYQ, mocks) and the AI analyzes it, answers questions, builds DPPs, and solves step-by-step.</div>
+                            <div><strong>JEEnius Studio:</strong> Upload any JEE PDF (notes, PYQ, mocks) and the AI
+                                analyzes it, answers questions, builds DPPs, and solves step-by-step.</div>
                         </li>
                     </ul>
                 </div>
@@ -1599,8 +2367,10 @@
                             <div class="ai-visual">
                                 <div class="ai-chat">
                                     <div class="ai-status"><span class="pulse-dot"></span> Thinking Process: 1.2s</div>
-                                    <div class="ai-question">Q: Block on an incline (37°) is pulled by torque τ. Find angular acceleration.</div>
-                                    <div class="ai-typing">AI: Start with the FBD. Resolve forces along the plane, then connect τ = Iα for the wheel...</div>
+                                    <div class="ai-question">Q: Block on an incline (37°) is pulled by torque τ. Find
+                                        angular acceleration.</div>
+                                    <div class="ai-typing">AI: Start with the FBD. Resolve forces along the plane, then
+                                        connect τ = Iα for the wheel...</div>
                                 </div>
                                 <div class="ai-panels">
                                     <div class="ai-panel">
@@ -1687,29 +2457,33 @@
 
             <div class="steps-grid">
                 <div class="steps-line"></div>
-                
+
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-play"></i></div>
                     <h4>1. Start Solving</h4>
-                    <p style="font-size: 0.9rem; margin-top: 8px;">Pick a PYQ, mock, or generated set. No onboarding quiz needed.</p>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Pick a PYQ, mock, or generated set. No onboarding
+                        quiz needed.</p>
                 </div>
 
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-eye"></i></div>
                     <h4>2. AI Observes</h4>
-                    <p style="font-size: 0.9rem; margin-top: 8px;">Tracks timing, accuracy, and the exact concept you struggled with.</p>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Tracks timing, accuracy, and the exact concept you
+                        struggled with.</p>
                 </div>
 
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-route"></i></div>
                     <h4>3. Plan Shifts</h4>
-                    <p style="font-size: 0.9rem; margin-top: 8px;">Study plan, analytics, and question difficulty reset automatically.</p>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Study plan, analytics, and question difficulty reset
+                        automatically.</p>
                 </div>
 
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-chart-line"></i></div>
                     <h4>4. Score Climbs</h4>
-                    <p style="font-size: 0.9rem; margin-top: 8px;">AI brings tougher mixes only after you master the last set.</p>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">AI brings tougher mixes only after you master the
+                        last set.</p>
                 </div>
             </div>
         </div>
@@ -1720,7 +2494,8 @@
         <div class="container">
             <div class="section-header">
                 <h2>Simple, Transparent Pricing</h2>
-                <p style="margin-top: 16px;">Every plan taps into 100k+ predicted and practice questions. Cancel anytime.</p>
+                <p style="margin-top: 16px;">Every plan taps into 100k+ predicted and practice questions. Cancel
+                    anytime.</p>
             </div>
             <div class="pricing-toggle-wrapper">
                 <div class="pricing-toggle-group">
@@ -1736,7 +2511,7 @@
                     <div class="price">₹0</div>
                     <p style="font-size: 0.9rem; margin-bottom: 24px;">Get a taste of most of JEEnius AI features.</p>
                     <a href="#" class="btn btn-secondary btn-full" data-cta="true">Get Started</a>
-                    
+
                     <div class="plan-body">
                         <div class="plan-metrics">
                             <h4>Low Limits</h4>
@@ -1774,16 +2549,21 @@
                     <div class="popular-tag">Most Popular</div>
                     <h3>Pro</h3>
                     <div class="price">₹499 <span>/month</span></div>
-                    <p style="font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.8);">Serious prep with every limit expanded.</p>
-                    <a href="#" class="btn btn-secondary btn-full" style="color: var(--primary); border: none;" data-cta="true">Start your dream IIT Prep today</a>
+                    <p style="font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.8);">Serious prep with
+                        every limit expanded.</p>
+                    <a href="#" class="btn btn-secondary btn-full" style="color: var(--primary); border: none;"
+                        data-cta="true">Start your dream IIT Prep today</a>
 
                     <div class="plan-body">
-                        <div class="plan-metrics" style="border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);">
+                        <div class="plan-metrics"
+                            style="border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);">
                             <h4 style="color: rgba(255,255,255,0.7);">Ample Limits</h4>
                             <ul>
-                                <li>Predicted Questions <span style="color: rgba(255,255,255,0.8);">Unlimited</span></li>
+                                <li>Predicted Questions <span style="color: rgba(255,255,255,0.8);">Unlimited</span>
+                                </li>
                                 <li>Image Doubt Uploads <span style="color: rgba(255,255,255,0.8);">200</span></li>
-                                <li>JEEnius AI Doubt Solving <span style="color: rgba(255,255,255,0.8);">10,000</span></li>
+                                <li>JEEnius AI Doubt Solving <span style="color: rgba(255,255,255,0.8);">10,000</span>
+                                </li>
                                 <li>Mock Tests <span style="color: rgba(255,255,255,0.8);">1,000</span></li>
                             </ul>
                         </div>
@@ -1817,7 +2597,7 @@
                     <div class="price">₹999 <span>/month</span></div>
                     <p style="font-size: 0.9rem; margin-bottom: 24px;">Droppers + Advanced prep with no caps.</p>
                     <a href="#" class="btn btn-primary btn-full" data-cta="true">Upgrade Now</a>
-                    
+
                     <div class="plan-body">
                         <div class="plan-metrics">
                             <h4>No Limits</h4>
@@ -1845,7 +2625,7 @@
                     <div class="price">₹0</div>
                     <p style="font-size: 0.9rem; margin-bottom: 24px;">Get a taste of most of JEEnius AI features.</p>
                     <a href="#" class="btn btn-secondary btn-full" data-cta="true">Get Started</a>
-                    
+
                     <div class="plan-body">
                         <div class="plan-metrics">
                             <h4>Low Limits</h4>
@@ -1885,16 +2665,21 @@
                         <s style="font-size: 1.6rem; color: rgba(255,255,255,0.6);">₹499</s>
                         ₹249.5 <span>/month (₹2,994/year)</span>
                     </div>
-                    <p style="font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.8);">50% off when billed annually.</p>
-                    <a href="#" class="btn btn-secondary btn-full" style="color: var(--primary); border: none;" data-cta="true">Start Yearly Plan</a>
+                    <p style="font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.8);">50% off when billed
+                        annually.</p>
+                    <a href="#" class="btn btn-secondary btn-full" style="color: var(--primary); border: none;"
+                        data-cta="true">Start Yearly Plan</a>
 
                     <div class="plan-body">
-                        <div class="plan-metrics" style="border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);">
+                        <div class="plan-metrics"
+                            style="border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);">
                             <h4 style="color: rgba(255,255,255,0.7);">Ample Limits</h4>
                             <ul>
-                                <li>Predicted Questions <span style="color: rgba(255,255,255,0.8);">Unlimited</span></li>
+                                <li>Predicted Questions <span style="color: rgba(255,255,255,0.8);">Unlimited</span>
+                                </li>
                                 <li>Image Doubt Uploads <span style="color: rgba(255,255,255,0.8);">200</span></li>
-                                <li>JEEnius AI Doubt Solving <span style="color: rgba(255,255,255,0.8);">10,000</span></li>
+                                <li>JEEnius AI Doubt Solving <span style="color: rgba(255,255,255,0.8);">10,000</span>
+                                </li>
                                 <li>Mock Tests <span style="color: rgba(255,255,255,0.8);">1,000</span></li>
                             </ul>
                         </div>
@@ -1930,7 +2715,7 @@
                     </div>
                     <p style="font-size: 0.9rem; margin-bottom: 24px;">Droppers + Advanced prep with no caps.</p>
                     <a href="#" class="btn btn-primary btn-full" data-cta="true">Upgrade Yearly</a>
-                    
+
                     <div class="plan-body">
                         <div class="plan-metrics">
                             <h4>No Limits</h4>
@@ -1967,11 +2752,13 @@
                     <span>— Riya, Class 12 Aspirant</span>
                 </div>
                 <div class="testimonial-card">
-                    <p>"The Live Duels made revision addictive. I logged in for 5 minutes and ended up solving 40 questions."</p>
+                    <p>"The Live Duels made revision addictive. I logged in for 5 minutes and ended up solving 40
+                        questions."</p>
                     <span>— Anirudh, Dropper</span>
                 </div>
                 <div class="testimonial-card">
-                    <p>"The PYQs library is amazing. I can filter by difficulty and topic which helps me focus on weak areas."</p>
+                    <p>"The PYQs library is amazing. I can filter by difficulty and topic which helps me focus on weak
+                        areas."</p>
                     <span>— Priya S., Class 12, Delhi</span>
                 </div>
                 <div class="testimonial-card">
@@ -1996,7 +2783,9 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        Unlike basic bots that give generic answers instantly, JEEnius AI "thinks" through the problem using complex reasoning models (like o-series and Fathom AI) to ensure the solution is accurate and easy to understand. Quality takes time.
+                        Unlike basic bots that give generic answers instantly, JEEnius AI "thinks" through the problem
+                        using complex reasoning models (like o-series and Fathom AI) to ensure the solution is accurate
+                        and easy to understand. Quality takes time.
                     </div>
                 </div>
 
@@ -2006,7 +2795,8 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        Yes. Our engine includes Fathom AI, which is famous for achieving a perfect score in JEE Advanced 2025. It is specifically trained on high-level concepts.
+                        Yes. Our engine includes Fathom AI, which is famous for achieving a perfect score in JEE
+                        Advanced 2025. It is specifically trained on high-level concepts.
                     </div>
                 </div>
 
@@ -2016,7 +2806,8 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        Absolutely. You don’t need to set anything up. Just use the app for self-study, and the AI will automatically adjust your schedule to fit your coaching gaps.
+                        Absolutely. You don’t need to set anything up. Just use the app for self-study, and the AI will
+                        automatically adjust your schedule to fit your coaching gaps.
                     </div>
                 </div>
             </div>
@@ -2029,9 +2820,11 @@
             <div class="footer-cta">
                 <div>
                     <h2 style="color: white; margin-bottom: 12px;">The 2026 Exam Paper is Being Written.</h2>
-                    <p style="color: var(--accent); font-size: 1.1rem;">Join 5,000+ students who are already solving it.</p>
+                    <p style="color: var(--accent); font-size: 1.1rem;">Join 5,000+ students who are already solving it.
+                    </p>
                 </div>
-                <a href="#prediction-lab" class="btn btn-secondary" style="border: none;" data-cta="true">View 2026 Prediction</a>
+                <a href="#prediction-lab" class="btn btn-secondary" style="border: none;" data-cta="true">View 2026
+                    Prediction</a>
             </div>
 
             <div class="footer-grid">
@@ -2043,7 +2836,8 @@
                         JEEnius AI
                     </div>
                     <p style="color: rgba(255,255,255,0.6); max-width: 300px;">
-                        The only engine fine-tuned on 20+ years of papers, Kota-level notes, and winning strategies. Built for the future of learning.
+                        The only engine fine-tuned on 20+ years of papers, Kota-level notes, and winning strategies.
+                        Built for the future of learning.
                     </p>
                 </div>
 
@@ -2061,9 +2855,12 @@
                         <h4>Company</h4>
                         <ul>
                             <li><a href="mailto:stash.ai.tech@gmail.com">Contact Us</a></li>
-                            <li><a href="https://ai.jeenius.tech/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></li>
-                            <li><a href="https://ai.jeenius.tech/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a></li>
-                            <li><a href="https://ai.jeenius.tech/refund-policy/" target="_blank" rel="noopener">Cancellation Policy</a></li>
+                            <li><a href="https://ai.jeenius.tech/privacy-policy/" target="_blank" rel="noopener">Privacy
+                                    Policy</a></li>
+                            <li><a href="https://ai.jeenius.tech/terms-of-service/" target="_blank" rel="noopener">Terms
+                                    of Service</a></li>
+                            <li><a href="https://ai.jeenius.tech/refund-policy/" target="_blank"
+                                    rel="noopener">Cancellation Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -2098,7 +2895,7 @@
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentElement;
-                
+
                 // Close other items
                 document.querySelectorAll('.faq-item').forEach(otherItem => {
                     if (otherItem !== item) {
@@ -2122,300 +2919,301 @@
             }
         });
 
-const insights = [
-    {"insight":"Expect 2026 Main to revive relation-count questions that mix symmetric-line equivalence in ℝ² with rational constraints, extending the 2024–25 Sets/Relations push toward geometry-infused counting.","tags":["Mathematics","HighYield","MixedConcept"]},
-    {"insight":"Parameter-driven complex loci with optimisation or probability add-ons should surface as NAT items, mirroring the 2025 complex-number trend of blending geometry with counting.","tags":["Mathematics","Challenger","ProbGeo"]},
-    {"insight":"Look for continuity/differentiability questions that demand integer-answer optimisation under radical/log constraints—the 2023–25 streak of counting non-differentiable points isn’t slowing down.","tags":["Mathematics","HighYield","Calculus"]},
-    {"insight":"Multi-stage integral equations with nested differentiation (seen in 2025) are primed to appear again, likely as fill-in-the-blank definite integrals with hybrid algebraic parameters.","tags":["Mathematics","IntegralCalculus","NAT"]},
-    {"insight":"Differential-equation problems will probably require solving the DE and then evaluating chained expressions (y′, y″, limiting values), following the 2024–25 multi-step evaluation shift.","tags":["Mathematics","DifferentialEquations","Precision"]},
-    {"insight":"Coordinate-geometry items embedding combinatorial sums or symbolic coefficients inside line/conic equations should recur, so be ready for orthocentre/circumcentre optimisation without options.","tags":["Mathematics","Geometry","HighYield"]},
-    {"insight":"Cross-fertilisation of statistics and probability—variance transforms leading straight into tailored RV questions—remains hot, so expect Bayesian–variance hybrids with algebraic preprocessing.","tags":["Mathematics","Statistics","ProbBlend"]},
-    {"insight":"Kinematics graphs asking for maximum crossing counts or qualitative multi-crossing reasoning are likely to expand, building on the 2024–25 graph-centric NAT focus.","tags":["Physics","Kinematics","GraphHeavy"]},
-    {"insight":"Work/Energy questions featuring variable mass systems or assertion-reason probes on power are poised to continue, so prep for conceptual write-ups instead of plug-and-chug.","tags":["Physics","WorkEnergy","Conceptual"]},
-    {"insight":"Rotational Motion should again deliver MI-of-modified-body blanks plus ratio comparatives, possibly pairing rolling acceleration with energy losses as in 2024–25.","tags":["Physics","RotationalMotion","HighYield"]},
-    {"insight":"Gravitation is trending toward assertion-reason questions on inside-body fields with cavities or removed sections; anticipate follow-up NAT demanding precise dimensional reasoning.","tags":["Physics","Gravitation","Reasoning"]},
-    {"insight":"Thermodynamics cycles will likely be graph-heavy multi-step journeys with reversibility judgments, including unusual γ values to prevent rote memorisation.","tags":["Physics","Thermodynamics","GraphHeavy"]},
-    {"insight":"Oscillations/Waves are moving toward real-world SHM analogues (floating blocks, stretched wires) plus damping/resonance reasoning, so expect assertion-reason plus quick SHM numericals.","tags":["Physics","SHM","MixedConcept"]},
-    {"insight":"Electrostatics should keep fusing dipoles, capacitors, and dimensional analysis, so prepare for cross-topic NAT that rewards unit reasoning over brute force.","tags":["Physics","Electrostatics","Fusion"]},
-    {"insight":"Current Electricity will likely carry forward assertion–reason and multiple-correct items tying battery combinations to instrument tweaks; precision over shortcuts will be rewarded.","tags":["Physics","CurrentElectricity","Reasoning"]},
-    {"insight":"Magnetism is on a graph-based Ampere’s law streak; anticipate integer-type problems requiring careful interpretation of B–r plots or solenoid cross-sections.","tags":["Physics","Magnetism","GraphHeavy"]},
-    {"insight":"Expect EMI/AC questions that stitch displacement current, inductance quantisation, and energy tracking in one go, echoing the 2025 concept-combo numericals.","tags":["Physics","EMI","MixedConcept"]},
-    {"insight":"Optics is trending toward integrated lens–mirror setups with polarization or interference tweaks, so 2026 likely features single-step MCQs concealing multi-concept reasoning.","tags":["Physics","Optics","HighYield"]},
-    {"insight":"Chemical Kinetics should keep coupling activation-energy data with half-life or pressure monitoring in single integer questions, demanding flawless unit management.","tags":["Chemistry","Kinetics","Precision"]},
-    {"insight":"Hydrocarbon questions are expected to retain assertion-style checks plus exact-integer fill-in-the-blank demands on stereochemistry or π-electron counts.","tags":["Chemistry","Organic","HighYield"]}
-];
+        const insights = [
+            { "insight": "Expect 2026 Main to revive relation-count questions that mix symmetric-line equivalence in ℝ² with rational constraints, extending the 2024–25 Sets/Relations push toward geometry-infused counting.", "tags": ["Mathematics", "HighYield", "MixedConcept"] },
+            { "insight": "Parameter-driven complex loci with optimisation or probability add-ons should surface as NAT items, mirroring the 2025 complex-number trend of blending geometry with counting.", "tags": ["Mathematics", "Challenger", "ProbGeo"] },
+            { "insight": "Look for continuity/differentiability questions that demand integer-answer optimisation under radical/log constraints—the 2023–25 streak of counting non-differentiable points isn’t slowing down.", "tags": ["Mathematics", "HighYield", "Calculus"] },
+            { "insight": "Multi-stage integral equations with nested differentiation (seen in 2025) are primed to appear again, likely as fill-in-the-blank definite integrals with hybrid algebraic parameters.", "tags": ["Mathematics", "IntegralCalculus", "NAT"] },
+            { "insight": "Differential-equation problems will probably require solving the DE and then evaluating chained expressions (y′, y″, limiting values), following the 2024–25 multi-step evaluation shift.", "tags": ["Mathematics", "DifferentialEquations", "Precision"] },
+            { "insight": "Coordinate-geometry items embedding combinatorial sums or symbolic coefficients inside line/conic equations should recur, so be ready for orthocentre/circumcentre optimisation without options.", "tags": ["Mathematics", "Geometry", "HighYield"] },
+            { "insight": "Cross-fertilisation of statistics and probability—variance transforms leading straight into tailored RV questions—remains hot, so expect Bayesian–variance hybrids with algebraic preprocessing.", "tags": ["Mathematics", "Statistics", "ProbBlend"] },
+            { "insight": "Kinematics graphs asking for maximum crossing counts or qualitative multi-crossing reasoning are likely to expand, building on the 2024–25 graph-centric NAT focus.", "tags": ["Physics", "Kinematics", "GraphHeavy"] },
+            { "insight": "Work/Energy questions featuring variable mass systems or assertion-reason probes on power are poised to continue, so prep for conceptual write-ups instead of plug-and-chug.", "tags": ["Physics", "WorkEnergy", "Conceptual"] },
+            { "insight": "Rotational Motion should again deliver MI-of-modified-body blanks plus ratio comparatives, possibly pairing rolling acceleration with energy losses as in 2024–25.", "tags": ["Physics", "RotationalMotion", "HighYield"] },
+            { "insight": "Gravitation is trending toward assertion-reason questions on inside-body fields with cavities or removed sections; anticipate follow-up NAT demanding precise dimensional reasoning.", "tags": ["Physics", "Gravitation", "Reasoning"] },
+            { "insight": "Thermodynamics cycles will likely be graph-heavy multi-step journeys with reversibility judgments, including unusual γ values to prevent rote memorisation.", "tags": ["Physics", "Thermodynamics", "GraphHeavy"] },
+            { "insight": "Oscillations/Waves are moving toward real-world SHM analogues (floating blocks, stretched wires) plus damping/resonance reasoning, so expect assertion-reason plus quick SHM numericals.", "tags": ["Physics", "SHM", "MixedConcept"] },
+            { "insight": "Electrostatics should keep fusing dipoles, capacitors, and dimensional analysis, so prepare for cross-topic NAT that rewards unit reasoning over brute force.", "tags": ["Physics", "Electrostatics", "Fusion"] },
+            { "insight": "Current Electricity will likely carry forward assertion–reason and multiple-correct items tying battery combinations to instrument tweaks; precision over shortcuts will be rewarded.", "tags": ["Physics", "CurrentElectricity", "Reasoning"] },
+            { "insight": "Magnetism is on a graph-based Ampere’s law streak; anticipate integer-type problems requiring careful interpretation of B–r plots or solenoid cross-sections.", "tags": ["Physics", "Magnetism", "GraphHeavy"] },
+            { "insight": "Expect EMI/AC questions that stitch displacement current, inductance quantisation, and energy tracking in one go, echoing the 2025 concept-combo numericals.", "tags": ["Physics", "EMI", "MixedConcept"] },
+            { "insight": "Optics is trending toward integrated lens–mirror setups with polarization or interference tweaks, so 2026 likely features single-step MCQs concealing multi-concept reasoning.", "tags": ["Physics", "Optics", "HighYield"] },
+            { "insight": "Chemical Kinetics should keep coupling activation-energy data with half-life or pressure monitoring in single integer questions, demanding flawless unit management.", "tags": ["Chemistry", "Kinetics", "Precision"] },
+            { "insight": "Hydrocarbon questions are expected to retain assertion-style checks plus exact-integer fill-in-the-blank demands on stereochemistry or π-electron counts.", "tags": ["Chemistry", "Organic", "HighYield"] }
+        ];
 
-const insightTextEl = document.getElementById('insightText');
-const insightTagsEl = document.getElementById('insightTags');
-const insightPrevBtn = document.getElementById('insightPrev');
-const insightNextBtn = document.getElementById('insightNext');
-let currentInsight = 0;
-let insightInterval;
+        const insightTextEl = document.getElementById('insightText');
+        const insightTagsEl = document.getElementById('insightTags');
+        const insightPrevBtn = document.getElementById('insightPrev');
+        const insightNextBtn = document.getElementById('insightNext');
+        let currentInsight = 0;
+        let insightInterval;
 
-function renderInsight(index) {
-    if (!insightTextEl || !insightTagsEl) return;
-    const item = insights[index];
-    insightTextEl.innerHTML = `"${item.insight}"`;
-    insightTagsEl.innerHTML = item.tags.map(tag => `<span class="tag">#${tag}</span>`).join('');
-}
-
-function goToInsight(index) {
-    currentInsight = (index + insights.length) % insights.length;
-    renderInsight(currentInsight);
-    restartInsightInterval();
-}
-
-function restartInsightInterval() {
-    if (insightInterval) clearInterval(insightInterval);
-    insightInterval = setInterval(() => {
-        goToInsight(currentInsight + 1);
-    }, 6000);
-}
-
-if (insights.length && insightTextEl && insightTagsEl) {
-    renderInsight(currentInsight);
-    restartInsightInterval();
-    if (insightPrevBtn) insightPrevBtn.addEventListener('click', () => goToInsight(currentInsight - 1));
-    if (insightNextBtn) insightNextBtn.addEventListener('click', () => goToInsight(currentInsight + 1));
-}
-
-const planDetailsSections = document.querySelectorAll('.plan-details-content');
-const planDetailButtons = document.querySelectorAll('.plan-toggle');
-const ctaButtons = document.querySelectorAll('[data-cta="true"]');
-
-function setPlanDetails(open) {
-    planDetailsSections.forEach(section => {
-        section.classList.toggle('open', open);
-    });
-    planDetailButtons.forEach(button => {
-        button.classList.toggle('open', open);
-        const label = button.querySelector('span');
-        if (label) label.textContent = open ? 'Hide Details' : 'View Details';
-    });
-}
-
-planDetailButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const willOpen = !button.classList.contains('open');
-        setPlanDetails(willOpen);
-        const label = (button.dataset.planToggle || 'plan-details').toString();
-        trackInteraction(label, 'details_toggle');
-    });
-});
-
-// Animated graph inside AI tutor visual
-const graphCanvas = document.getElementById('aiGraphCanvas');
-const fbdCanvas = document.getElementById('fbdCanvas');
-if (graphCanvas) {
-    const ctx = graphCanvas.getContext('2d');
-    const width = graphCanvas.width;
-    const height = graphCanvas.height;
-    let offset = 0;
-
-    function drawGraph() {
-        ctx.clearRect(0, 0, width, height);
-
-        // Draw grid
-        ctx.strokeStyle = 'rgba(27,59,54,0.08)';
-        ctx.lineWidth = 1;
-        for (let x = 0; x <= width; x += 30) {
-            ctx.beginPath();
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, height);
-            ctx.stroke();
-        }
-        for (let y = 0; y <= height; y += 20) {
-            ctx.beginPath();
-            ctx.moveTo(0, y);
-            ctx.lineTo(width, y);
-            ctx.stroke();
+        function renderInsight(index) {
+            if (!insightTextEl || !insightTagsEl) return;
+            const item = insights[index];
+            insightTextEl.innerHTML = `"${item.insight}"`;
+            insightTagsEl.innerHTML = item.tags.map(tag => `<span class="tag">#${tag}</span>`).join('');
         }
 
-        // Angular velocity curve
-        ctx.strokeStyle = '#0f766e';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        for (let x = 0; x <= width; x++) {
-            const y = height / 2 + Math.sin((x + offset) * 0.04) * 20;
-            if (x === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-
-        // Linear velocity curve
-        ctx.strokeStyle = '#d97706';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        for (let x = 0; x <= width; x++) {
-            const y = height / 2 + Math.cos((x + offset) * 0.05) * 12;
-            if (x === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-
-        offset += 2;
-        requestAnimationFrame(drawGraph);
-    }
-
-    drawGraph();
-}
-
-if (fbdCanvas) {
-    const fbdCtx = fbdCanvas.getContext('2d');
-    const { width, height } = fbdCanvas;
-
-    function drawFBD() {
-        fbdCtx.clearRect(0, 0, width, height);
-
-        const planeAngle = -Math.PI / 6; // -30°
-        const baseX = 15;
-        const baseY = height - 10;
-        const planeLength = width - 30;
-        const topX = baseX + planeLength * Math.cos(planeAngle);
-        const topY = baseY + planeLength * Math.sin(planeAngle);
-
-        // Inclined plane
-        fbdCtx.fillStyle = '#dcefd8';
-        fbdCtx.beginPath();
-        fbdCtx.moveTo(baseX, baseY);
-        fbdCtx.lineTo(topX, topY);
-        fbdCtx.lineTo(topX, baseY);
-        fbdCtx.closePath();
-        fbdCtx.fill();
-
-        // Block
-        const blockSize = 26;
-        const blockCenterX = baseX + planeLength * 0.5 * Math.cos(planeAngle);
-        const blockCenterY = baseY + planeLength * 0.5 * Math.sin(planeAngle);
-        const blockX = blockCenterX - blockSize / 2;
-        const blockY = blockCenterY - blockSize / 2;
-        fbdCtx.fillStyle = '#1B3B36';
-        fbdCtx.fillRect(blockX, blockY, blockSize, blockSize);
-
-        function drawArrow(ctx, fromX, fromY, toX, toY, color) {
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(fromX, fromY);
-            ctx.lineTo(toX, toY);
-            ctx.stroke();
-            const headLen = 8;
-            const angle = Math.atan2(toY - fromY, toX - fromX);
-            ctx.beginPath();
-            ctx.moveTo(toX, toY);
-            ctx.lineTo(
-                toX - headLen * Math.cos(angle - Math.PI / 6),
-                toY - headLen * Math.sin(angle - Math.PI / 6)
-            );
-            ctx.moveTo(toX, toY);
-            ctx.lineTo(
-                toX - headLen * Math.cos(angle + Math.PI / 6),
-                toY - headLen * Math.sin(angle + Math.PI / 6)
-            );
-            ctx.stroke();
+        function goToInsight(index) {
+            currentInsight = (index + insights.length) % insights.length;
+            renderInsight(currentInsight);
+            restartInsightInterval();
         }
 
-        // Normal force (perpendicular)
-        const normalAngle = planeAngle + Math.PI / 2;
-        const normalStartX = blockCenterX + Math.cos(normalAngle) * 5;
-        const normalStartY = blockCenterY + Math.sin(normalAngle) * 5;
-        const normalEndX = normalStartX + Math.cos(normalAngle) * 50;
-        const normalEndY = normalStartY + Math.sin(normalAngle) * 50;
-        drawArrow(fbdCtx, normalStartX, normalStartY, normalEndX, normalEndY, '#1B3B36');
-
-        // Weight
-        drawArrow(fbdCtx, blockCenterX, blockCenterY, blockCenterX, blockCenterY + 55, '#1B3B36');
-
-        // Tension along plane
-        const tensionAngle = planeAngle;
-        const tensionEndX = blockCenterX + Math.cos(tensionAngle) * 50;
-        const tensionEndY = blockCenterY + Math.sin(tensionAngle) * 50;
-        drawArrow(fbdCtx, blockCenterX, blockCenterY, tensionEndX, tensionEndY, '#1B3B36');
-
-        // Theta marking
-        fbdCtx.strokeStyle = '#1B3B36';
-        fbdCtx.lineWidth = 1.5;
-        fbdCtx.beginPath();
-        fbdCtx.arc(baseX, baseY, 18, 0, planeAngle, true);
-        fbdCtx.stroke();
-
-        // Labels
-        fbdCtx.fillStyle = '#1B3B36';
-        fbdCtx.font = '12px "Plus Jakarta Sans", sans-serif';
-        fbdCtx.fillText('θ', baseX + 16, baseY - 6);
-        fbdCtx.fillText('N', normalEndX + 4, normalEndY - 4);
-        fbdCtx.fillText('mg', blockCenterX + 4, blockCenterY + 65);
-        fbdCtx.fillText('T', tensionEndX - 12, tensionEndY - 6);
-    }
-
-    drawFBD();
-}
-
-// Pricing toggle
-const pricingToggleButtons = document.querySelectorAll('[data-pricing-toggle]');
-const monthlyPlans = document.querySelector('[data-plan-group="monthly"]');
-const annualPlans = document.querySelector('[data-plan-group="annual"]');
-const trackInteraction = (label, type = 'cta') => {
-    if (window.posthog) {
-        try { posthog.capture('landing_page_interaction', { label, type }); } catch (e) { }
-    }
-    if (window.firebaseAnalytics) {
-        try { firebaseAnalytics.logEvent('landing_page_interaction', { label, type }); } catch (e) { }
-    }
-};
-
-function setPricingMode(mode) {
-    if (!monthlyPlans || !annualPlans) return;
-    if (mode === 'annual') {
-        monthlyPlans.style.display = 'none';
-        annualPlans.style.display = 'grid';
-        if (typeof setPlanDetails === 'function') {
-            setPlanDetails(false);
+        function restartInsightInterval() {
+            if (insightInterval) clearInterval(insightInterval);
+            insightInterval = setInterval(() => {
+                goToInsight(currentInsight + 1);
+            }, 6000);
         }
-    } else {
-        monthlyPlans.style.display = 'grid';
-        annualPlans.style.display = 'none';
-    }
-}
 
-if (monthlyPlans) monthlyPlans.style.display = 'grid';
-if (annualPlans) annualPlans.style.display = 'none';
+        if (insights.length && insightTextEl && insightTagsEl) {
+            renderInsight(currentInsight);
+            restartInsightInterval();
+            if (insightPrevBtn) insightPrevBtn.addEventListener('click', () => goToInsight(currentInsight - 1));
+            if (insightNextBtn) insightNextBtn.addEventListener('click', () => goToInsight(currentInsight + 1));
+        }
 
-pricingToggleButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        pricingToggleButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        setPricingMode(btn.dataset.pricingToggle);
-        trackInteraction(`pricing_${btn.dataset.pricingToggle}`, 'toggle');
-    });
-});
+        const planDetailsSections = document.querySelectorAll('.plan-details-content');
+        const planDetailButtons = document.querySelectorAll('.plan-toggle');
+        const ctaButtons = document.querySelectorAll('[data-cta="true"]');
 
-function getRedirectUrl() {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const isAndroid = /android/i.test(userAgent);
-    return isAndroid ? 'https://play.google.com/store/apps/details?id=com.stash.jeenius&hl=en_IN' : 'https://jeenius.tech';
-}
+        function setPlanDetails(open) {
+            planDetailsSections.forEach(section => {
+                section.classList.toggle('open', open);
+            });
+            planDetailButtons.forEach(button => {
+                button.classList.toggle('open', open);
+                const label = button.querySelector('span');
+                if (label) label.textContent = open ? 'Hide Details' : 'View Details';
+            });
+        }
 
-ctaButtons.forEach(button => {
-    button.addEventListener('click', event => {
-        event.preventDefault();
-        const targetUrl = getRedirectUrl();
-        const label = (button.dataset.trackLabel || button.innerText || '').trim();
-        trackInteraction(label, 'cta');
-        window.open(targetUrl, '_blank');
-    });
-});
+        planDetailButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const willOpen = !button.classList.contains('open');
+                setPlanDetails(willOpen);
+                const label = (button.dataset.planToggle || 'plan-details').toString();
+                trackInteraction(label, 'details_toggle');
+            });
+        });
 
-document.querySelectorAll('button, a').forEach(el => {
-    el.addEventListener('click', () => {
-        const label = (el.innerText || el.getAttribute('aria-label') || 'button').trim();
-        trackInteraction(label || 'interaction', 'click');
-    });
-});
+        // Animated graph inside AI tutor visual
+        const graphCanvas = document.getElementById('aiGraphCanvas');
+        const fbdCanvas = document.getElementById('fbdCanvas');
+        if (graphCanvas) {
+            const ctx = graphCanvas.getContext('2d');
+            const width = graphCanvas.width;
+            const height = graphCanvas.height;
+            let offset = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-    trackInteraction('page_loaded', 'page');
-});
+            function drawGraph() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Draw grid
+                ctx.strokeStyle = 'rgba(27,59,54,0.08)';
+                ctx.lineWidth = 1;
+                for (let x = 0; x <= width; x += 30) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, height);
+                    ctx.stroke();
+                }
+                for (let y = 0; y <= height; y += 20) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(width, y);
+                    ctx.stroke();
+                }
+
+                // Angular velocity curve
+                ctx.strokeStyle = '#0f766e';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                for (let x = 0; x <= width; x++) {
+                    const y = height / 2 + Math.sin((x + offset) * 0.04) * 20;
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Linear velocity curve
+                ctx.strokeStyle = '#d97706';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                for (let x = 0; x <= width; x++) {
+                    const y = height / 2 + Math.cos((x + offset) * 0.05) * 12;
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                offset += 2;
+                requestAnimationFrame(drawGraph);
+            }
+
+            drawGraph();
+        }
+
+        if (fbdCanvas) {
+            const fbdCtx = fbdCanvas.getContext('2d');
+            const { width, height } = fbdCanvas;
+
+            function drawFBD() {
+                fbdCtx.clearRect(0, 0, width, height);
+
+                const planeAngle = -Math.PI / 6; // -30°
+                const baseX = 15;
+                const baseY = height - 10;
+                const planeLength = width - 30;
+                const topX = baseX + planeLength * Math.cos(planeAngle);
+                const topY = baseY + planeLength * Math.sin(planeAngle);
+
+                // Inclined plane
+                fbdCtx.fillStyle = '#dcefd8';
+                fbdCtx.beginPath();
+                fbdCtx.moveTo(baseX, baseY);
+                fbdCtx.lineTo(topX, topY);
+                fbdCtx.lineTo(topX, baseY);
+                fbdCtx.closePath();
+                fbdCtx.fill();
+
+                // Block
+                const blockSize = 26;
+                const blockCenterX = baseX + planeLength * 0.5 * Math.cos(planeAngle);
+                const blockCenterY = baseY + planeLength * 0.5 * Math.sin(planeAngle);
+                const blockX = blockCenterX - blockSize / 2;
+                const blockY = blockCenterY - blockSize / 2;
+                fbdCtx.fillStyle = '#1B3B36';
+                fbdCtx.fillRect(blockX, blockY, blockSize, blockSize);
+
+                function drawArrow(ctx, fromX, fromY, toX, toY, color) {
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(fromX, fromY);
+                    ctx.lineTo(toX, toY);
+                    ctx.stroke();
+                    const headLen = 8;
+                    const angle = Math.atan2(toY - fromY, toX - fromX);
+                    ctx.beginPath();
+                    ctx.moveTo(toX, toY);
+                    ctx.lineTo(
+                        toX - headLen * Math.cos(angle - Math.PI / 6),
+                        toY - headLen * Math.sin(angle - Math.PI / 6)
+                    );
+                    ctx.moveTo(toX, toY);
+                    ctx.lineTo(
+                        toX - headLen * Math.cos(angle + Math.PI / 6),
+                        toY - headLen * Math.sin(angle + Math.PI / 6)
+                    );
+                    ctx.stroke();
+                }
+
+                // Normal force (perpendicular)
+                const normalAngle = planeAngle + Math.PI / 2;
+                const normalStartX = blockCenterX + Math.cos(normalAngle) * 5;
+                const normalStartY = blockCenterY + Math.sin(normalAngle) * 5;
+                const normalEndX = normalStartX + Math.cos(normalAngle) * 50;
+                const normalEndY = normalStartY + Math.sin(normalAngle) * 50;
+                drawArrow(fbdCtx, normalStartX, normalStartY, normalEndX, normalEndY, '#1B3B36');
+
+                // Weight
+                drawArrow(fbdCtx, blockCenterX, blockCenterY, blockCenterX, blockCenterY + 55, '#1B3B36');
+
+                // Tension along plane
+                const tensionAngle = planeAngle;
+                const tensionEndX = blockCenterX + Math.cos(tensionAngle) * 50;
+                const tensionEndY = blockCenterY + Math.sin(tensionAngle) * 50;
+                drawArrow(fbdCtx, blockCenterX, blockCenterY, tensionEndX, tensionEndY, '#1B3B36');
+
+                // Theta marking
+                fbdCtx.strokeStyle = '#1B3B36';
+                fbdCtx.lineWidth = 1.5;
+                fbdCtx.beginPath();
+                fbdCtx.arc(baseX, baseY, 18, 0, planeAngle, true);
+                fbdCtx.stroke();
+
+                // Labels
+                fbdCtx.fillStyle = '#1B3B36';
+                fbdCtx.font = '12px "Plus Jakarta Sans", sans-serif';
+                fbdCtx.fillText('θ', baseX + 16, baseY - 6);
+                fbdCtx.fillText('N', normalEndX + 4, normalEndY - 4);
+                fbdCtx.fillText('mg', blockCenterX + 4, blockCenterY + 65);
+                fbdCtx.fillText('T', tensionEndX - 12, tensionEndY - 6);
+            }
+
+            drawFBD();
+        }
+
+        // Pricing toggle
+        const pricingToggleButtons = document.querySelectorAll('[data-pricing-toggle]');
+        const monthlyPlans = document.querySelector('[data-plan-group="monthly"]');
+        const annualPlans = document.querySelector('[data-plan-group="annual"]');
+        const trackInteraction = (label, type = 'cta') => {
+            if (window.posthog) {
+                try { posthog.capture('landing_page_interaction', { label, type }); } catch (e) { }
+            }
+            if (window.firebaseAnalytics) {
+                try { firebaseAnalytics.logEvent('landing_page_interaction', { label, type }); } catch (e) { }
+            }
+        };
+
+        function setPricingMode(mode) {
+            if (!monthlyPlans || !annualPlans) return;
+            if (mode === 'annual') {
+                monthlyPlans.style.display = 'none';
+                annualPlans.style.display = 'grid';
+                if (typeof setPlanDetails === 'function') {
+                    setPlanDetails(false);
+                }
+            } else {
+                monthlyPlans.style.display = 'grid';
+                annualPlans.style.display = 'none';
+            }
+        }
+
+        if (monthlyPlans) monthlyPlans.style.display = 'grid';
+        if (annualPlans) annualPlans.style.display = 'none';
+
+        pricingToggleButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                pricingToggleButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                setPricingMode(btn.dataset.pricingToggle);
+                trackInteraction(`pricing_${btn.dataset.pricingToggle}`, 'toggle');
+            });
+        });
+
+        function getRedirectUrl() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const isAndroid = /android/i.test(userAgent);
+            return isAndroid ? 'https://play.google.com/store/apps/details?id=com.stash.jeenius&hl=en_IN' : 'https://jeenius.tech';
+        }
+
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', event => {
+                event.preventDefault();
+                const targetUrl = getRedirectUrl();
+                const label = (button.dataset.trackLabel || button.innerText || '').trim();
+                trackInteraction(label, 'cta');
+                window.open(targetUrl, '_blank');
+            });
+        });
+
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', () => {
+                const label = (el.innerText || el.getAttribute('aria-label') || 'button').trim();
+                trackInteraction(label || 'interaction', 'click');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            trackInteraction('page_loaded', 'page');
+        });
     </script>
 </body>
+
 </html>
