@@ -2117,14 +2117,14 @@
             </a>
 
             <div class="nav-links">
-                <a href="#prediction-lab">2026 Prediction</a>
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#faq">FAQ</a>
+                <a href="#prediction-lab" data-track-label="nav_prediction" data-track-category="nav">2026 Prediction</a>
+                <a href="#features" data-track-label="nav_features" data-track-category="nav">Features</a>
+                <a href="#pricing" data-track-label="nav_pricing" data-track-category="nav">Pricing</a>
+                <a href="#faq" data-track-label="nav_faq" data-track-category="nav">FAQ</a>
             </div>
 
             <div class="nav-cta">
-                <a href="#pricing" class="btn btn-primary" data-cta="true">Start Free Trial</a>
+                <a href="#pricing" class="btn btn-primary" data-cta="true" data-track-label="nav_start_trial" data-track-category="cta" data-track-manual="true">Start Free Trial</a>
             </div>
 
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -2135,11 +2135,11 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#prediction-lab">2026 Prediction</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#pricing" style="color: var(--primary);" data-cta="true">Start Free Trial</a>
+        <a href="#prediction-lab" data-track-label="mobile_nav_prediction" data-track-category="nav">2026 Prediction</a>
+        <a href="#features" data-track-label="mobile_nav_features" data-track-category="nav">Features</a>
+        <a href="#pricing" data-track-label="mobile_nav_pricing" data-track-category="nav">Pricing</a>
+        <a href="#faq" data-track-label="mobile_nav_faq" data-track-category="nav">FAQ</a>
+        <a href="#pricing" style="color: var(--primary);" data-cta="true" data-track-label="mobile_nav_start_trial" data-track-category="cta" data-track-manual="true">Start Free Trial</a>
     </div>
 
     <!-- Hero Section -->
@@ -2177,10 +2177,10 @@
 
 
                     <div class="hero-actions">
-                        <a href="#prediction-lab" class="btn btn-primary" data-cta="true">
+                        <a href="#prediction-lab" class="btn btn-primary" data-cta="true" data-track-label="hero_unlock_prediction" data-track-category="cta" data-track-manual="true">
                             Unlock 2026 Prediction <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
                         </a>
-                        <a href="#pricing" class="btn btn-secondary">
+                        <a href="#pricing" class="btn btn-secondary" data-track-label="hero_browse_plans" data-track-category="cta">
                             Browse Plans
                         </a>
                     </div>
@@ -2256,15 +2256,15 @@
                                 </div>
                             </div>
                             <div class="insight-controls">
-                                <button class="insight-nav" id="insightPrev">
+                                <button class="insight-nav" id="insightPrev" data-track-label="insight_prev" data-track-category="insight" data-track-manual="true">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </button>
-                                <button class="insight-nav" id="insightNext" style="margin-left: 8px;">
+                                <button class="insight-nav" id="insightNext" style="margin-left: 8px;" data-track-label="insight_next" data-track-category="insight" data-track-manual="true">
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </button>
                             </div>
                         </div>
-                        <a href="prediction-engine.html" target="_blank" class="learn-more-link">
+                        <a href="prediction-engine.html" target="_blank" class="learn-more-link" data-track-label="prediction_engine_learn_more" data-track-category="link" data-track-manual="true">
                             Learn how we predict <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -2512,8 +2512,8 @@
             </div>
             <div class="pricing-toggle-wrapper">
                 <div class="pricing-toggle-group">
-                    <button class="active" data-pricing-toggle="monthly">Monthly</button>
-                    <button data-pricing-toggle="annual">Annual · 50% Off</button>
+                    <button class="active" data-pricing-toggle="monthly" data-track-label="pricing_toggle_monthly" data-track-category="toggle">Monthly</button>
+                    <button data-pricing-toggle="annual" data-track-label="pricing_toggle_annual" data-track-category="toggle">Annual · 50% Off</button>
                 </div>
             </div>
 
@@ -2523,7 +2523,7 @@
                     <h3>Free</h3>
                     <div class="price">₹0</div>
                     <p style="font-size: 0.9rem; margin-bottom: 24px;">Get a taste of most of JEEnius AI features.</p>
-                    <a href="#" class="btn btn-secondary btn-full" data-cta="true">Get Started</a>
+                    <a href="#" class="btn btn-secondary btn-full" data-cta="true" data-track-label="pricing_free_get_started" data-track-category="cta" data-track-manual="true">Get Started</a>
 
                     <div class="plan-body">
                         <div class="plan-metrics">
@@ -2565,7 +2565,7 @@
                     <p style="font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.8);">Serious prep with
                         every limit expanded.</p>
                     <a href="#" class="btn btn-secondary btn-full" style="color: var(--primary); border: none;"
-                        data-cta="true">Start your dream IIT Prep today</a>
+                        data-cta="true" data-track-label="pricing_pro_monthly_start" data-track-category="cta" data-track-manual="true">Start your dream IIT Prep today</a>
 
                     <div class="plan-body">
                         <div class="plan-metrics"
@@ -2598,7 +2598,7 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="plan-toggle" id="planDetailsToggle">
+                    <button class="plan-toggle" id="planDetailsToggle" data-track-label="plan_details_toggle" data-track-category="details" data-track-manual="true">
                         <span>View Details</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
@@ -2609,7 +2609,7 @@
                     <h3>Pro+</h3>
                     <div class="price">₹999 <span>/month</span></div>
                     <p style="font-size: 0.9rem; margin-bottom: 24px;">Droppers + Advanced prep with no caps.</p>
-                    <a href="#" class="btn btn-primary btn-full" data-cta="true">Upgrade Now</a>
+                    <a href="#" class="btn btn-primary btn-full" data-cta="true" data-track-label="pricing_pro_plus_monthly_upgrade" data-track-category="cta" data-track-manual="true">Upgrade Now</a>
 
                     <div class="plan-body">
                         <div class="plan-metrics">
@@ -2637,7 +2637,7 @@
                     <h3>Free</h3>
                     <div class="price">₹0</div>
                     <p style="font-size: 0.9rem; margin-bottom: 24px;">Get a taste of most of JEEnius AI features.</p>
-                    <a href="#" class="btn btn-secondary btn-full" data-cta="true">Get Started</a>
+                    <a href="#" class="btn btn-secondary btn-full" data-cta="true" data-track-label="pricing_free_annual_get_started" data-track-category="cta" data-track-manual="true">Get Started</a>
 
                     <div class="plan-body">
                         <div class="plan-metrics">
@@ -2681,7 +2681,7 @@
                     <p style="font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.8);">50% off when billed
                         annually.</p>
                     <a href="#" class="btn btn-secondary btn-full" style="color: var(--primary); border: none;"
-                        data-cta="true">Start Yearly Plan</a>
+                        data-cta="true" data-track-label="pricing_pro_annual_start" data-track-category="cta" data-track-manual="true">Start Yearly Plan</a>
 
                     <div class="plan-body">
                         <div class="plan-metrics"
@@ -2727,7 +2727,7 @@
                         ₹499.5 <span>/month (₹5,994/year)</span>
                     </div>
                     <p style="font-size: 0.9rem; margin-bottom: 24px;">Droppers + Advanced prep with no caps.</p>
-                    <a href="#" class="btn btn-primary btn-full" data-cta="true">Upgrade Yearly</a>
+                    <a href="#" class="btn btn-primary btn-full" data-cta="true" data-track-label="pricing_pro_plus_annual_upgrade" data-track-category="cta" data-track-manual="true">Upgrade Yearly</a>
 
                     <div class="plan-body">
                         <div class="plan-metrics">
@@ -2836,7 +2836,7 @@
                     <p style="color: var(--accent); font-size: 1.1rem;">Join 5,000+ students who are already solving it.
                     </p>
                 </div>
-                <a href="#prediction-lab" class="btn btn-secondary" style="border: none;" data-cta="true">View 2026
+                <a href="#prediction-lab" class="btn btn-secondary" style="border: none;" data-cta="true" data-track-label="footer_view_prediction" data-track-category="cta" data-track-manual="true">View 2026
                     Prediction</a>
             </div>
 
@@ -3166,11 +3166,12 @@
         const monthlyPlans = document.querySelector('[data-plan-group="monthly"]');
         const annualPlans = document.querySelector('[data-plan-group="annual"]');
         const trackInteraction = (label, type = 'cta') => {
+            const eventName = `stashai_${type || 'interaction'}`;
             if (window.posthog) {
-                try { posthog.capture('landing_page_interaction', { label, type }); } catch (e) { }
+                try { posthog.capture(eventName, { label, type }); } catch (e) { }
             }
             if (window.firebaseAnalytics) {
-                try { firebaseAnalytics.logEvent('landing_page_interaction', { label, type }); } catch (e) { }
+                try { firebaseAnalytics.logEvent(eventName, { label, type }); } catch (e) { }
             }
         };
 

@@ -1,308 +1,982 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stash AI — Human-centric Intelligence</title>
-
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stash AI | Human-Centric Innovation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      :root {
-        --accent: #7c3aed;
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        background: radial-gradient(circle at 25% 25%, #0f172a 0%, #020617 70%);
-        color: #f8fafc;
-        overflow-x: hidden; /* prevent horizontal scroll*/
-      }
-      .glass {
-        background: rgba(255, 255, 255, 0.06);
-        backdrop-filter: blur(14px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-      .neon {
-        text-shadow: 0 0 12px var(--accent), 0 0 26px var(--accent);
-      }
-      ::-webkit-scrollbar {
-        width: 0;
-      }
+        :root {
+            --bg-dark: #0a0a0f;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-secondary: #ec4899; /* Pink */
+            --accent-tertiary: #06b6d4; /* Cyan */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --blur-amt: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scrollbar-color: rgba(255, 255, 255, 0.2) #050507;
+            scrollbar-width: thin;
+        }
+
+        html::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: #050507;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(236, 72, 153, 0.65), rgba(99, 102, 241, 0.65));
+            border-radius: 999px;
+            border: 2px solid #050507;
+        }
+
+        html::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgba(236, 72, 153, 0.85), rgba(99, 102, 241, 0.85));
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0;
+            background: linear-gradient(90deg, var(--accent-secondary), var(--accent-tertiary));
+            z-index: 1100;
+            transition: width 0.15s ease-out;
+        }
+
+        /* Animated Background Mesh */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+                        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%),
+                        radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.1), transparent 40%);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 { width: 400px; height: 400px; background: var(--accent-primary); top: -100px; left: -100px; animation-delay: 0s; }
+        .orb-2 { width: 300px; height: 300px; background: var(--accent-secondary); bottom: 20%; right: -50px; animation-delay: -5s; }
+        .orb-3 { width: 350px; height: 350px; background: var(--accent-tertiary); top: 40%; left: 30%; animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -50px); }
+        }
+
+        @keyframes cue-bounce {
+            0%, 100% { transform: translateY(0); opacity: 0.85; }
+            50% { transform: translateY(8px); opacity: 0.3; }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Glass Components */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-amt));
+            -webkit-backdrop-filter: blur(var(--blur-amt));
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-panel:hover:not(.interactive-card) {
+            border-color: var(--glass-highlight);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .interactive-card {
+            --tiltX: 0deg;
+            --tiltY: 0deg;
+            --lift: 0px;
+            transform: perspective(1200px) rotateX(var(--tiltX)) rotateY(var(--tiltY)) translateY(var(--lift));
+            transition: transform 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+
+        .interactive-card:hover {
+            --lift: -6px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: background 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--accent-primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: white; }
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-radius: 999px;
+            padding: 10px 14px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu-toggle:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                position: relative;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 64px;
+                right: 0;
+                left: 0;
+                flex-direction: column;
+                gap: 16px;
+                padding: 24px;
+                background: rgba(10, 10, 15, 0.95);
+                border: 1px solid var(--glass-border);
+                border-radius: 16px;
+                opacity: 0;
+                transform: translateY(-10px);
+                pointer-events: none;
+                transition: opacity 0.25s ease, transform 0.25s ease;
+            }
+
+            .nav-links.open {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: black;
+        }
+
+        .btn-primary:hover {
+            background: #e0e7ff;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badges {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: var(--glass-bg);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            width: fit-content;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badges strong { color: white; }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .scroll-cue::before {
+            content: '';
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(180deg, transparent, var(--accent-primary));
+            opacity: 0.7;
+        }
+
+        .scroll-cue i {
+            animation: cue-bounce 1.6s infinite;
+            font-size: 1rem;
+            color: var(--accent-tertiary);
+        }
+
+        /* Bento Grid Layouts */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .bento-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bento-item.wide {
+            grid-column: span 2;
+        }
+        
+        @media (max-width: 768px) {
+            .bento-item.wide { grid-column: span 1; }
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Flagship Section */
+        .flagship-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .flagship-container { grid-template-columns: 1fr; }
+        }
+
+        .flagship-visual {
+            position: relative;
+            height: 400px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flagship-card {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .stat-item h4 {
+            font-size: 1.8rem;
+            color: var(--accent-tertiary);
+            margin-bottom: 0;
+        }
+
+        .stat-number {
+            display: inline-block;
+            min-width: 70px;
+        }
+        
+        .stat-item span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* The Engine Section */
+        .engine-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .comparison-col h4 {
+            margin-bottom: 20px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .comparison-item {
+            padding: 15px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .comparison-item:last-child { border-bottom: none; }
+
+        .check-icon { color: var(--accent-tertiary); }
+        .cross-icon { color: #ef4444; }
+
+        /* Future Labs */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card.reveal-placeholder > :not(.placeholder-label) {
+            filter: blur(8px);
+            opacity: 0.2;
+        }
+
+        .placeholder-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 10, 15, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .project-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 80px 0 40px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .floating-cta {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #0a0a0f;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            z-index: 1100;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .floating-cta i {
+            font-size: 1rem;
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+        }
+
+        @media (max-width: 600px) {
+            .floating-cta {
+                right: 16px;
+                bottom: 16px;
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
     </style>
-  </head>
+</head>
+<body>
 
-  <body class="scroll-smooth">
-    <!-- ╔═ HEADER ═╗ -->
-    <header
-      class="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-4 sm:px-6 lg:px-10 py-4 backdrop-blur-md"
-    >
-      <div class="text-lg sm:text-xl font-extrabold tracking-tight text-violet-400">
-        Stash<span class="text-violet-500">AI</span>
-      </div>
+    <div class="scroll-progress"></div>
 
-      <!-- Desktop nav -->
-      <nav class="hidden md:flex gap-6 text-slate-300 text-sm font-medium">
-        <a href="#problem" class="hover:text-violet-300">Problem</a>
-        <a href="#vision" class="hover:text-violet-300">Vision</a>
-        <a href="#values" class="hover:text-violet-300">Values</a>
-        <a href="#approach" class="hover:text-violet-300">Approach</a>
-        <a href="#careers" class="hover:text-violet-300">Careers</a>
-      </nav>
-    </header>
+    <!-- Background Elements -->
+    <div class="bg-mesh">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
-    <main class="pt-28">
-      <!-- ╔═ HERO ═╗ -->
-      <section id="hero" class="flex flex-col items-center text-center px-4 sm:px-6">
-        <h1
-          class="neon font-extrabold leading-tight text-3xl sm:text-4xl md:text-6xl max-w-screen-sm mx-auto"
-        >
-          <span class="block">Silently Smart,</span>
-          <span class="block text-violet-400">Powerfully Human.</span>
-        </h1>
-
-        <p class="mt-4 max-w-xs sm:max-w-md text-base sm:text-lg text-slate-300">
-          Intelligence that hums in the background—so people stay front and center.
-        </p>
-
-        <canvas id="dotCanvas" class="mt-16 h-64 w-full self-stretch md:max-w-none"></canvas>
-      </section>
-
-      <!-- ╔═ PROBLEM ═╗ -->
-      <section id="problem" class="mt-32 px-4 sm:px-6">
-        <div
-          class="max-w-5xl mx-auto glass rounded-3xl p-8 sm:p-10 md:p-14 flex flex-col gap-6"
-        >
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">
-            The Problem We Solve
-          </h2>
-          <p class="text-base sm:text-lg md:text-xl text-slate-200">
-            AI is ready—shipping it isn't. Teams lose weeks fighting three blockers:
-          </p>
-
-          <ul class="grid gap-4 md:grid-cols-3 text-slate-300 text-sm sm:text-base md:text-lg">
-            <li class="flex items-start gap-2">
-              <span class="text-violet-400 text-xl">•</span> Disconnected tools &
-              pipelines delay launches
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-violet-400 text-xl">•</span> Invisible models sap
-              trust & approvals
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-violet-400 text-xl">•</span> Strict data rules turn
-              deployment into a legal maze
-            </li>
-          </ul>
-
-          <p class="text-base sm:text-lg md:text-xl text-slate-200">
-            <strong>Stash AI</strong> delivers one integrated, explainable &
-            privacy-first stack—so you can deploy ML in days, not months.
-          </p>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-layer-group"></i> Stash<span>AI</span>
+            </a>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span>Menu</span>
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="nav-links" id="primary-navigation">
+                <a href="#vision">Vision</a>
+                <a href="#flagship">JEEnius</a>
+                <a href="#engine">Technology</a>
+                <a href="#labs">Labs</a>
+            </div>
         </div>
-      </section>
+    </nav>
 
-      <!-- ╔═ VISION ═╗ -->
-      <section id="vision" class="mt-32 px-4 sm:px-6">
-        <div class="max-w-5xl mx-auto grid lg:grid-cols-2 items-center gap-10">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">Our Vision</h2>
-          <p
-            class="glass p-6 sm:p-8 rounded-2xl text-base sm:text-lg md:text-xl text-slate-200"
-          >
-            A world where trustworthy AI quietly augments human decisions—from
-            learning to healthcare to climate—so people solve bigger problems,
-            faster.
-          </p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <h1 class="gradient-text">We Don’t Just Train Models.<br>We Solve Problems.</h1>
+                <p>Stash AI is the venture lab building the next generation of <strong>human-centric tools</strong>. We combine the world’s most powerful AI with deep empathy to create products that make life easier, smarter, and fairer.</p>
+                
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#flagship" class="btn btn-primary">
+                        View Our Portfolio <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#vision" class="btn btn-secondary">Our Philosophy</a>
+                </div>
+
+                <div class="hero-badges">
+                    <i class="fa-solid fa-rocket" style="color: var(--accent-secondary);"></i>
+                    <span>Incubating the future. Creators of <strong>JEEnius AI</strong>. Built by engineers from <strong>IIT Kanpur</strong>.</span>
+                </div>
+            </div>
         </div>
-      </section>
-
-      <!-- ╔═ VALUES ═╗ -->
-      <section id="values" class="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
-        <h2 class="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-12">
-          Core Values
-        </h2>
-
-        <div class="grid gap-6 sm:gap-8 md:grid-cols-3">
-          <div class="glass p-6 rounded-2xl flex flex-col">
-            <h3 class="text-lg sm:text-xl font-semibold mb-2">Human First</h3>
-            <p class="text-slate-300 flex-1 text-sm sm:text-base">
-              We obsess over experience—AI should elevate, not distract.
-            </p>
-          </div>
-
-          <div class="glass p-6 rounded-2xl flex flex-col">
-            <h3 class="text-lg sm:text-xl font-semibold mb-2">
-              Radical Transparency
-            </h3>
-            <p class="text-slate-300 flex-1 text-sm sm:text-base">
-              Explainable systems earn trust. We open the black box.
-            </p>
-          </div>
-
-          <div class="glass p-6 rounded-2xl flex flex-col">
-            <h3 class="text-lg sm:text-xl font-semibold mb-2">Safety by Design</h3>
-            <p class="text-slate-300 flex-1 text-sm sm:text-base">
-              Privacy & ethics are blueprints, not features.
-            </p>
-          </div>
+        <div class="scroll-cue fade-in-up" aria-hidden="true">
+            <span>Scroll</span>
+            <i class="fa-solid fa-chevron-down"></i>
         </div>
-      </section>
+    </section>
 
-      <!-- ╔═ APPROACH ═╗ -->
-      <section id="approach" class="mt-32 px-4 sm:px-6">
-        <h2 class="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-12">
-          Our Approach
-        </h2>
-
-        <div class="relative max-w-5xl mx-auto">
-          <div
-            class="absolute inset-0 -skew-y-2 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-indigo-600/20 rounded-3xl"
-          ></div>
-
-          <div
-            class="relative glass p-8 sm:p-10 rounded-3xl grid gap-8 md:grid-cols-2"
-          >
-            <div>
-              <h4 class="text-xl sm:text-2xl font-semibold mb-2">
-                Research ⇢ Reality
-              </h4>
-              <p class="text-slate-300 text-sm sm:text-base">
-                We distill frontier ML into production-ready modules, co-developed
-                with domain experts.
-              </p>
+    <!-- The Why (Societal Impact) -->
+    <section id="vision">
+        <div class="container">
+            <div class="fade-in-up" style="margin-bottom: 40px;">
+                <h2>Technology Should Serve Humanity,<br><span style="opacity: 0.5;">Not Confuse It.</span></h2>
+                <p style="max-width: 600px;">We believe AI shouldn’t be a “black box” reserved for tech giants. It should be a utility that helps you pass exams, manage your health, and reclaim your time.</p>
             </div>
 
-            <div>
-              <h4 class="text-xl sm:text-2xl font-semibold mb-2">Modular Stack</h4>
-              <p class="text-slate-300 text-sm sm:text-base">
-                Composable micro-services let us iterate safely and ship across
-                verticals.
-              </p>
+            <div class="bento-grid">
+                <div class="glass-panel bento-item fade-in-up interactive-card">
+                    <div class="icon-box" style="color: var(--accent-tertiary);"><i class="fa-solid fa-earth-americas"></i></div>
+                    <h3>Real World, Real Impact</h3>
+                    <p>We don’t build AI for the sake of AI. If it doesn’t solve a societal problem—like education inequality or data privacy—we don’t build it.</p>
+                </div>
+                <div class="glass-panel bento-item fade-in-up interactive-card">
+                    <div class="icon-box" style="color: var(--accent-secondary);"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Privacy as a Promise</h3>
+                    <p>In an era of data mining, Stash builds "Safety by Design." Your data belongs to you, not our servers. We use on-device inference where possible.</p>
+                </div>
+                <div class="glass-panel bento-item wide fade-in-up interactive-card">
+                    <div class="icon-box" style="color: var(--accent-primary);"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3>The Human Co-Pilot</h3>
+                    <p>Our tools never replace human effort; they amplify it. We build the engine; you steer the ship. From students to doctors, we empower the user.</p>
+                </div>
             </div>
-
-            <div>
-              <h4 class="text-xl sm:text-2xl font-semibold mb-2">
-                Privacy-Preserving AI
-              </h4>
-              <p class="text-slate-300 text-sm sm:text-base">
-                On-device inference & differential privacy keep sensitive data
-                sealed.
-              </p>
-            </div>
-
-            <div>
-              <h4 class="text-xl sm:text-2xl font-semibold mb-2">
-                Human-in-the-Loop
-              </h4>
-              <p class="text-slate-300 text-sm sm:text-base">
-                Feedback cycles harness expert judgement to refine model outputs
-                continuously.
-              </p>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-- ╔═ CAREERS ═╗ -->
-      <section id="careers" class="mt-40 text-center px-4 sm:px-6">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-          Join the Builders
-        </h2>
-        <p
-          class="text-slate-300 max-w-xs sm:max-w-md md:max-w-2xl mx-auto text-sm sm:text-base"
-        >
-          We're hiring researchers, engineers, and designers who believe
-          technology should expand human capacity.
-          <span class="text-violet-300">stash.ai.tech@gmail.com</span>
-        </p>
-      </section>
-    </main>
+    <!-- The Flagship: JEEnius AI -->
+    <section id="flagship">
+        <div class="container">
+            <div class="glass-panel fade-in-up interactive-card">
+                <div class="flagship-container">
+                    <div>
+                        <div style="display: inline-block; padding: 5px 15px; background: rgba(236, 72, 153, 0.2); border-radius: 20px; color: var(--accent-secondary); font-size: 0.8rem; font-weight: bold; margin-bottom: 15px;">STASH ORIGINAL</div>
+                        <h2>From Our Lab to the World: <span class="gradient-text">JEEnius AI</span></h2>
+                        <p>Education was broken. Students were drowning in generic content. We fixed it. JEEnius AI is a specialized prediction engine that is changing how India studies.</p>
+                        
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <h4 class="stat-number" data-target="5000" data-format="compact" data-suffix="+">5k+</h4>
+                                <span>Active Students</span>
+                            </div>
+                            <div class="stat-item">
+                                <h4 class="stat-number" data-target="94" data-suffix="%">94%</h4>
+                                <span>Accuracy</span>
+                            </div>
+                            <div class="stat-item">
+                                <h4 class="stat-number" data-target="24" data-suffix="/7">24/7</h4>
+                                <span>AI Tutor</span>
+                            </div>
+                        </div>
 
-    <!-- ╔═ FOOTER ═╗ -->
-    <footer
-      class="mt-32 py-10 text-center text-slate-500 flex flex-col items-center gap-4 px-4"
-    >
-      <div
-        class="flex flex-wrap justify-center items-center gap-3 text-base sm:text-lg font-medium"
-      >
-        <img
-          src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/IIT_Kanpur_Logo.svg/1200px-IIT_Kanpur_Logo.svg.png"
-          alt="IIT Kanpur logo"
-          class="h-8 w-auto"
-        />
-        <span class="text-center">Developed by Engineers from IIT Kanpur</span>
-      </div>
+                        <blockquote style="margin-top: 30px; border-left: 3px solid var(--accent-primary); padding-left: 15px; font-style: italic; color: white;">
+                            “Stash AI took complex model stacking and turned it into a simple app that helped me score higher.”
+                        </blockquote>
+                        
+                        <a href="https://landing.jeenius.tech" class="btn btn-primary" style="margin-top: 30px;" target="_blank" rel="noopener noreferrer">Explore JEEnius AI</a>
+                    </div>
+                    
+                    <div class="flagship-visual">
+                        <!-- Abstract representation of the app -->
+                        <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, rgba(0,0,0,0) 70%);"></div>
+                        <div class="flagship-card interactive-card">
+                            <i class="fa-solid fa-brain" style="font-size: 3rem; color: var(--accent-secondary); margin-bottom: 15px;"></i>
+                            <h3>Super-Brain Architecture</h3>
+                            <p style="font-size: 0.9rem; margin-bottom: 0;">Orchestrating Gemini 3 Pro, GPT-5, and Fathom AI to outperform human experts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <span class="text-xs sm:text-sm">© 2025 Stash AI. Crafted with curiosity.</span>
+    <!-- The Stash Engine -->
+    <section id="engine">
+        <div class="container">
+            <div class="fade-in-up" style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h2>The Stash Advantage:<br>The Best Brain for Every Job.</h2>
+                <p>Most companies rely on one AI model. We rely on the <em>right</em> one. Our proprietary <strong>"Model Stack"</strong> technology combines the strengths of different AIs into one seamless solution.</p>
+            </div>
+
+            <div class="glass-panel fade-in-up interactive-card" style="margin-top: 40px;">
+                <div class="engine-comparison">
+                    <div class="comparison-col">
+                        <h4>The Old Way</h4>
+                        <div class="comparison-item">
+                            <i class="fa-solid fa-xmark cross-icon"></i>
+                            <span>Locked into one provider (e.g., just GPT)</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fa-solid fa-xmark cross-icon"></i>
+                            <span>Generic, hallucinated answers</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fa-solid fa-xmark cross-icon"></i>
+                            <span>"Black Box" decisions</span>
+                        </div>
+                    </div>
+                    <div class="comparison-col" style="border-left: 1px solid var(--glass-border);">
+                        <h4 style="color: var(--accent-tertiary);">The Stash Way</h4>
+                        <div class="comparison-item">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            <span><strong>A Team of Models:</strong> We mix Gemini, OpenAI, and Open Source.</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            <span><strong>Specialized Agents:</strong> Fine-tuned on specific data (e.g., 25 years of JEE papers).</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            <span><strong>Radical Transparency:</strong> We show you <em>how</em> the AI thinks.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Labs -->
+    <section id="labs">
+        <div class="container">
+            <h2 class="fade-in-up">What We Are Solving Next.</h2>
+            <div class="bento-grid" style="margin-top: 40px;">
+                <div class="glass-panel project-card fade-in-up reveal-placeholder interactive-card">
+                    <div class="project-tag" style="color: #ef4444; border-color: #ef4444;">Healthcare</div>
+                    <div class="icon-box" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h3>Project Vital</h3>
+                    <p>AI that simplifies medical reports for patients, not just doctors. Understanding your health shouldn't require a PhD.</p>
+                    <div class="placeholder-label">Revealing Soon</div>
+                </div>
+                <div class="glass-panel project-card fade-in-up reveal-placeholder interactive-card">
+                    <div class="project-tag" style="color: #eab308; border-color: #eab308;">Legal</div>
+                    <div class="icon-box" style="background: rgba(234, 179, 8, 0.2); color: #eab308;"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h3>Project Civic</h3>
+                    <p>Making legal documents and government schemes readable for everyone. Democratizing access to justice.</p>
+                    <div class="placeholder-label">Revealing Soon</div>
+                </div>
+                <div class="glass-panel project-card fade-in-up reveal-placeholder interactive-card">
+                    <div class="project-tag" style="color: #22c55e; border-color: #22c55e;">Climate</div>
+                    <div class="icon-box" style="background: rgba(34, 197, 94, 0.2); color: #22c55e;"><i class="fa-solid fa-leaf"></i></div>
+                    <h3>Project Green</h3>
+                    <p>Hyper-local climate insights to help farmers and homeowners plan better. Data-driven sustainability.</p>
+                    <div class="placeholder-label">Revealing Soon</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo" style="margin-bottom: 20px;">
+                        <i class="fa-solid fa-layer-group"></i> Stash<span>AI</span>
+                    </a>
+                    <h3 style="margin-bottom: 10px;">Let’s Build a Better Future.</h3>
+                    <p>Whether you are an engineer, a dreamer, or a partner—there is a place for you at Stash.</p>
+                    <a href="mailto:stash.ai.tech@gmail.com" class="btn btn-secondary" style="margin-top: 10px;">
+                        <i class="fa-regular fa-envelope"></i> stash.ai.tech@gmail.com
+                    </a>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <ul style="list-style: none; margin-top: 20px;">
+                        <li style="margin-bottom: 10px;"><a href="#flagship" style="color: var(--text-muted); text-decoration: none;">JEEnius AI</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#vision" style="color: var(--text-muted); text-decoration: none;">Our Vision</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#labs" style="color: var(--text-muted); text-decoration: none;">Future Labs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Origin</h4>
+                    <p style="margin-top: 20px;">Developed with pride by engineers from <strong>IIT Kanpur</strong>.</p>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <a href="https://www.linkedin.com/company/stashai/" style="color: white; font-size: 1.2rem;" aria-label="StashAI on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/stash-ai" style="color: white; font-size: 1.2rem;" aria-label="StashAI on GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Stash AI. Crafted with curiosity.</span>
+                <span>Human-Centric Intelligence</span>
+            </div>
+        </div>
     </footer>
 
-    <!-- ╔═ DOT-CANVAS SCRIPT ═╗ -->
+    <a href="mailto:stash.ai.tech@gmail.com" class="floating-cta">
+        <i class="fa-solid fa-comments"></i>
+        <span>Start a Build</span>
+    </a>
+
     <script>
-      const canvas = document.getElementById("dotCanvas");
-      const ctx = canvas.getContext("2d");
+        /*
+            Experience Layer
+            Example: a visitor scrolling halfway down sees the nav tighten, the progress bar fill accordingly, stat counters tick up once, and cards tilt toward the cursor.
+        */
+        const navbar = document.getElementById('navbar');
+        const scrollProgress = document.querySelector('.scroll-progress');
 
-      const DOT_COUNT = 300;
-      const dots = [];
-      let width, height;
-      let mouseX = -1000,
-        mouseY = -1000;
+        const syncScrollState = () => {
+            const scrolled = window.scrollY;
+            if (scrolled > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            const pageHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = pageHeight > 0 ? (scrolled / pageHeight) * 100 : 0;
+            if (scrollProgress) {
+                scrollProgress.style.width = `${progress}%`;
+            }
+        };
 
-      function resize() {
-        width = canvas.width = canvas.clientWidth;
-        height = canvas.height = canvas.clientHeight;
-        dots.length = 0;
-        for (let i = 0; i < DOT_COUNT; i++) {
-          dots.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            r: Math.random() * 1.2 + 0.3,
-            dx: (Math.random() - 0.5) * 0.25,
-            dy: (Math.random() - 0.5) * 0.25,
-            opacity: Math.random() * 0.5 + 0.5,
-          });
-        }
-      }
-      window.addEventListener("resize", resize);
-      resize();
+        window.addEventListener('scroll', syncScrollState);
+        syncScrollState();
 
-      canvas.addEventListener("mousemove", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
-      });
-      canvas.addEventListener("mouseleave", () => {
-        mouseX = mouseY = -1000;
-      });
+        const revealObserver = new IntersectionObserver((entries, observerInstance) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observerInstance.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
+        document.querySelectorAll('.fade-in-up').forEach(el => revealObserver.observe(el));
 
-        dots.forEach((d) => {
-          const dist = Math.hypot(d.x - mouseX, d.y - mouseY);
-          if (dist < 100) {
-            const a = Math.atan2(d.y - mouseY, d.x - mouseX);
-            const force = (100 - dist) / 100;
-            d.x += Math.cos(a) * force * 2;
-            d.y += Math.sin(a) * force * 2;
-          }
-          d.x += d.dx;
-          d.y += d.dy;
-          if (d.x < 0 || d.x > width) d.dx *= -1;
-          if (d.y < 0 || d.y > height) d.dy *= -1;
-          
-          ctx.beginPath();
-          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(148, 163, 184, ${d.opacity})`;
-          ctx.fill();
+        const compactFormatter = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
+
+        const formatValue = (value, format) => {
+            if (format === 'compact') {
+                return compactFormatter.format(value);
+            }
+            return Math.round(value).toString();
+        };
+
+        const animateNumber = element => {
+            const target = parseFloat(element.dataset.target || '0');
+            const duration = parseInt(element.dataset.duration || '1600', 10);
+            const suffix = element.dataset.suffix || '';
+            const prefix = element.dataset.prefix || '';
+            const format = element.dataset.format || 'standard';
+            const start = performance.now();
+
+            const step = currentTime => {
+                const progress = Math.min((currentTime - start) / duration, 1);
+                const currentValue = target * progress;
+                element.textContent = `${prefix}${formatValue(currentValue, format)}${suffix}`;
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            };
+
+            element.textContent = `${prefix}0${suffix}`;
+            requestAnimationFrame(step);
+        };
+
+        const statObserver = new IntersectionObserver((entries, observerInstance) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    if (!el.dataset.animated) {
+                        el.dataset.animated = 'true';
+                        animateNumber(el);
+                    }
+                    observerInstance.unobserve(el);
+                }
+            });
+        }, { threshold: 0.6 });
+
+        document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+
+        const interactiveCards = document.querySelectorAll('.interactive-card');
+        interactiveCards.forEach(card => {
+            card.addEventListener('mousemove', event => {
+                const rect = card.getBoundingClientRect();
+                const rotateY = ((event.clientX - rect.left) / rect.width - 0.5) * 14;
+                const rotateX = (0.5 - (event.clientY - rect.top) / rect.height) * 14;
+                card.style.setProperty('--tiltX', `${rotateX.toFixed(2)}deg`);
+                card.style.setProperty('--tiltY', `${rotateY.toFixed(2)}deg`);
+            });
+            const resetTilt = () => {
+                card.style.setProperty('--tiltX', '0deg');
+                card.style.setProperty('--tiltY', '0deg');
+            };
+            card.addEventListener('mouseleave', resetTilt);
+            card.addEventListener('touchend', resetTilt);
         });
 
-        requestAnimationFrame(animate);
-      }
-      animate();
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', event => {
+                event.preventDefault();
+                const destination = document.querySelector(anchor.getAttribute('href'));
+                if (destination) {
+                    destination.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        /* Navigation toggle handles responsive menu state transitions */
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinksGroup = document.getElementById('primary-navigation');
+        if (menuToggle && navLinksGroup) {
+            const setMenuState = desiredState => {
+                const isOpen = navLinksGroup.classList.contains('open');
+                if (desiredState === isOpen) {
+                    return;
+                }
+                navLinksGroup.classList.toggle('open', desiredState);
+                menuToggle.setAttribute('aria-expanded', String(desiredState));
+            };
+
+            menuToggle.addEventListener('click', () => {
+                setMenuState(!navLinksGroup.classList.contains('open'));
+            });
+
+            navLinksGroup.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => setMenuState(false));
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    setMenuState(false);
+                }
+            });
+        }
     </script>
-  </body>
+</body>
 </html>
