@@ -43,6 +43,8 @@
         html {
             scrollbar-color: rgba(255, 255, 255, 0.2) #050507;
             scrollbar-width: thin;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         html::-webkit-scrollbar {
@@ -86,10 +88,9 @@
         /* Animated Background Mesh */
         .bg-mesh {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             overflow: hidden;
             background: radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
@@ -376,7 +377,7 @@
         /* Bento Grid Layouts */
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
         }
 
@@ -392,6 +393,12 @@
         
         @media (max-width: 768px) {
             .bento-item.wide { grid-column: span 1; }
+        }
+
+        @media (max-width: 600px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .icon-box {
@@ -469,6 +476,16 @@
             grid-template-columns: 1fr 1fr;
             gap: 24px;
             margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .engine-comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-col {
+                border-left: none !important;
+            }
         }
 
         .comparison-col h4 {
@@ -836,7 +853,7 @@
                 </div>
                 <div>
                     <h4>Origin</h4>
-                    <p style="margin-top: 20px;">Developed with pride by engineers from <strong>IIT Kanpur</strong>.</p>
+                    <p style="margin-top: 20px;">Developed with love by engineers from <strong>IIT Kanpur</strong>.</p>
                     <div style="display: flex; gap: 15px; margin-top: 10px;">
                         <a href="https://www.linkedin.com/company/stashai/" style="color: white; font-size: 1.2rem;" aria-label="StashAI on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                         <a href="https://github.com/stash-ai" style="color: white; font-size: 1.2rem;" aria-label="StashAI on GitHub"><i class="fa-brands fa-github"></i></a>
