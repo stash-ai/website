@@ -38,6 +38,12 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Firebase runtime config (copy firebase-config.example.js -> firebase-config.js and keep it private) -->
+    <script src="firebase-config.js"></script>
+
+    <!-- PostHog runtime config (copy posthog-config.example.js -> posthog-config.js and keep it private) -->
+    <script src="posthog-config.js"></script>
+
     <style>
         /* --- CSS Variables & Reset --- */
         :root {
@@ -2054,32 +2060,39 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCtYkgqv45K4vV7lbg-P_NRaJ5bQmvDzpk",
-            authDomain: "jeenius-4d29d.firebaseapp.com",
-            projectId: "jeenius-4d29d",
-            storageBucket: "jeenius-4d29d.firebasestorage.app",
-            messagingSenderId: "194414308208",
-            appId: "1:194414308208:web:afc4b571031e4b2ddc3db5",
-            measurementId: "G-5HZC38VBFC"
-        };
-        let firebaseAnalytics = null;
-        try {
-            const firebaseApp = firebase.initializeApp(firebaseConfig);
-            firebaseAnalytics = firebase.analytics(firebaseApp);
-            window.firebaseAnalytics = firebaseAnalytics;
-        } catch (error) {
-            console.warn('Firebase init error', error);
-        }
+        (function () {
+            const firebaseConfig = window.__FIREBASE_CONFIG__;
+            let firebaseAnalytics = null;
+
+            if (!firebaseConfig) {
+                console.warn('Firebase config not found. Provide window.__FIREBASE_CONFIG__ in firebase-config.js');
+                return;
+            }
+
+            try {
+                const firebaseApp = firebase.initializeApp(firebaseConfig);
+                firebaseAnalytics = firebase.analytics(firebaseApp);
+                window.firebaseAnalytics = firebaseAnalytics;
+            } catch (error) {
+                console.warn('Firebase init error', error);
+            }
+        })();
     </script>
 
     <!-- PostHog -->
     <script>
         (function () {
+            const posthogConfig = window.__POSTHOG_CONFIG__;
+            if (!posthogConfig || !posthogConfig.apiKey || !posthogConfig.apiHost) {
+                console.warn('PostHog config not found. Provide window.__POSTHOG_CONFIG__ in posthog-config.js');
+                window.posthog = { capture: function () { } };
+                return;
+            }
+
             try {
                 !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture identify alias reset people.set people.set_once group set_config register register_once unregister".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
-                posthog.init('phc_jvXIe0ffzOTMJY9HmQv9ZQIPEm69i4mjXKLgrfZvv3O', {
-                    api_host: 'https://us.i.posthog.com',
+                posthog.init(posthogConfig.apiKey, {
+                    api_host: posthogConfig.apiHost,
                     capture_pageview: true,
                     session_recording: { recordCanvas: true }
                 });
